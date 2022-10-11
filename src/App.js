@@ -33,8 +33,9 @@ class App extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeExperience = this.handleChangeExperience.bind(this);
-    this.handleChangeSchool = this.handleChangeSchool.bind(this);
+    this.handleChangeEducation = this.handleChangeEducation.bind(this);
     this.handleAddExperience = this.handleAddExperience.bind(this);
+    this.handleAddEducation = this.handleAddEducation.bind(this);
   }
 
   handleChange(event) {
@@ -60,7 +61,7 @@ class App extends React.Component {
     this.setState({ experiences: updated }, () => { console.log(this.state) });
   }
 
-  handleChangeSchool(event) {
+  handleChangeEducation(event) {
     const value = event.target.value;
     const name = event.target.name;
     const index = Number(event.target.id);
@@ -87,6 +88,19 @@ class App extends React.Component {
       }
     );
     this.setState({ experiences: added }, () => { console.log(this.state) });
+  }
+
+  handleAddEducation(event) {
+    const added = this.state.educations.concat(
+      {
+        schoolName: '',
+        degree: '',
+        studyTitle: '',
+        studyFrom: '',
+        studyTo: '',
+      }
+    );
+    this.setState({ educations: added }, () => { console.log(this.state) });
   }
 
   render() {
@@ -147,25 +161,29 @@ class App extends React.Component {
 
           <div>
             <h4>Education</h4>
-            <div>
-              <label>
-                <input id="0" placeholder="School Name" name="schoolName" type="text" onChange={this.handleChangeSchool} />
-              </label>
-              <label>
-                <input id="0" placeholder="Degree" name="degree" type="text" onChange={this.handleChangeSchool} />
-              </label>
-              <label>
-                <input id="0" placeholder="Title of Study" name="studyTitle" type="text" onChange={this.handleChangeSchool} />
-              </label>
-              <label>
-                <input id="0" placeholder="From" name="studyFrom" type="text" onChange={this.handleChangeSchool} />
-              </label>
-              <label>
-                <input id="0" placeholder="To" name="studyTo" type="text" onChange={this.handleChangeSchool} />
-              </label>
-              <button type="button">Delete</button>
-            </div>
-            <button type="button">Add</button>
+            {this.state.educations.map((education, i) => {
+              return (
+                <div key={i}>
+                  <label>
+                    <input id={i} placeholder="School Name" name="schoolName" type="text" onChange={this.handleChangeEducation} />
+                  </label>
+                  <label>
+                    <input id={i} placeholder="Degree" name="degree" type="text" onChange={this.handleChangeEducation} />
+                  </label>
+                  <label>
+                    <input id={i} placeholder="Title of Study" name="studyTitle" type="text" onChange={this.handleChangeEducation} />
+                  </label>
+                  <label>
+                    <input id={i} placeholder="From" name="studyFrom" type="text" onChange={this.handleChangeEducation} />
+                  </label>
+                  <label>
+                    <input id={i} placeholder="To" name="studyTo" type="text" onChange={this.handleChangeEducation} />
+                  </label>
+                  <button id={i} type="button">Delete</button>
+                </div>
+              );
+            })}
+            <button type="button" onClick={this.handleAddEducation}>Add</button>
           </div>
           
           <div>
