@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Overview from "./components/Overview";
 
 class App extends React.Component {
   constructor(props) {
@@ -33,11 +34,7 @@ class App extends React.Component {
     const value = event.target.value;
     const name = event.target.name;
 
-    this.setState({ 
-        [name]: value 
-    }, () => {
-        console.log(this.state);
-    });
+    this.setState({ [name]: value });
   }
 
   render() {
@@ -110,6 +107,15 @@ class App extends React.Component {
           <div>
             <input type="reset" />
           </div>
+
+          <Overview 
+            name={this.state.name} 
+            title={this.state.title}
+            email={this.state.email} 
+            phone={this.state.phone}
+            linkedin={this.state.linkedin} 
+            github={this.state.github}
+          />
         </form>
       </div>
     );
