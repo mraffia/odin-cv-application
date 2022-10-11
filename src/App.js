@@ -10,11 +10,13 @@ class App extends React.Component {
       email: '',
       phone: '',
       schoolName: '',
+      degree: '',
       studyTitle: '',
       studyFrom: '',
       studyTo: '',
       companyName: '',
-      positionTitle: '',
+      position: '',
+      workCity: '',
       workFrom: '',
       workTo: '',
       workDesc: '',
@@ -46,6 +48,9 @@ class App extends React.Component {
               <input placeholder="Name" name="name" type="text" onChange={this.handleChange} />
             </label>
             <label>
+              <input placeholder="Title" name="title" type="text" onChange={this.handleChange} />
+            </label>
+            <label>
               <input placeholder="Email" name="email" type="email" onChange={this.handleChange} />
             </label>
             <label>
@@ -59,7 +64,10 @@ class App extends React.Component {
               <input placeholder="Company Name" name="companyName" type="text" onChange={this.handleChange} />
             </label>
             <label>
-              <input placeholder="Position Title" name="positionTitle" type="text" onChange={this.handleChange} />
+              <input placeholder="Position" name="position" type="text" onChange={this.handleChange} />
+            </label>
+            <label>
+              <input placeholder="City" name="workCity" type="text" onChange={this.handleChange} />
             </label>
             <label>
               <input placeholder="From" name="workFrom" type="text" onChange={this.handleChange} />
@@ -76,6 +84,9 @@ class App extends React.Component {
             <h4>Education</h4>
             <label>
               <input placeholder="School Name" name="schoolName" type="text" onChange={this.handleChange} />
+            </label>
+            <label>
+              <input placeholder="Degree" name="degree" type="text" onChange={this.handleChange} />
             </label>
             <label>
               <input placeholder="Title of Study" name="studyTitle" type="text" onChange={this.handleChange} />
