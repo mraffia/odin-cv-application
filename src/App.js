@@ -9,6 +9,8 @@ class App extends React.Component {
       title: '',
       email: '',
       phone: '',
+      linkedin: '',
+      github: '',
       schoolName: '',
       degree: '',
       studyTitle: '',
@@ -55,6 +57,12 @@ class App extends React.Component {
             </label>
             <label>
               <input placeholder="Phone Number" name="phone" type="text" onChange={this.handleChange} />
+            </label>
+            <label>
+              <input placeholder="LinkedIn (profile link)" name="linkedin" type="text" onChange={this.handleChange} />
+            </label>
+            <label>
+              <input placeholder="GitHub (profile link)" name="github" type="text" onChange={this.handleChange} />
             </label>
           </div>
 
