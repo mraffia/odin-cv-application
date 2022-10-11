@@ -14,7 +14,7 @@ class App extends React.Component {
         linkedin: '',
         github: '',
       },
-      companies: [{
+      experiences: [{
         companyName: '',
         position: '',
         workCity: '',
@@ -22,7 +22,7 @@ class App extends React.Component {
         workTo: '',
         workDesc: '',
       }],
-      schools: [{
+      educations: [{
         schoolName: '',
         degree: '',
         studyTitle: '',
@@ -32,9 +32,9 @@ class App extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleChangeCompany = this.handleChangeCompany.bind(this);
+    this.handleChangeExperience = this.handleChangeExperience.bind(this);
     this.handleChangeSchool = this.handleChangeSchool.bind(this);
-    this.handleAddCompany = this.handleAddCompany.bind(this);
+    this.handleAddExperience = this.handleAddExperience.bind(this);
   }
 
   handleChange(event) {
@@ -45,19 +45,19 @@ class App extends React.Component {
     this.setState({ personal }, () => { console.log(this.state) });
   }
 
-  handleChangeCompany(event) {
+  handleChangeExperience(event) {
     const value = event.target.value;
     const name = event.target.name;
     const index = Number(event.target.id);
 
-    const updated = this.state.companies.map((item, i) => {
+    const updated = this.state.experiences.map((item, i) => {
       if (i === index) {
         item[name] = value;
       }
       return item;
     });
 
-    this.setState({ companies: updated }, () => { console.log(this.state) });
+    this.setState({ experiences: updated }, () => { console.log(this.state) });
   }
 
   handleChangeSchool(event) {
@@ -65,18 +65,18 @@ class App extends React.Component {
     const name = event.target.name;
     const index = Number(event.target.id);
 
-    const updated = this.state.schools.map((item, i) => {
+    const updated = this.state.educations.map((item, i) => {
       if (i === index) {
         item[name] = value;
       }
       return item;
     });
 
-    this.setState({ schools: updated }, () => { console.log(this.state) });
+    this.setState({ educations: updated }, () => { console.log(this.state) });
   }
 
-  handleAddCompany(event) {
-    const added = this.state.companies.concat(
+  handleAddExperience(event) {
+    const added = this.state.experiences.concat(
       {
         companyName: '',
         position: '',
@@ -86,7 +86,7 @@ class App extends React.Component {
         workDesc: '',
       }
     );
-    this.setState({ companies: added }, () => { console.log(this.state) });
+    this.setState({ experiences: added }, () => { console.log(this.state) });
   }
 
   render() {
@@ -117,32 +117,32 @@ class App extends React.Component {
 
           <div>
             <h4>Work Experience</h4>
-            {this.state.companies.map((company, i) => {
+            {this.state.experiences.map((experience, i) => {
               return (
                 <div key={i}>
                   <label>
-                    <input id={i} placeholder="Company Name" name="companyName" type="text" onChange={this.handleChangeCompany} />
+                    <input id={i} placeholder="Company Name" name="companyName" type="text" onChange={this.handleChangeExperience} />
                   </label>
                   <label>
-                    <input id={i} placeholder="Position" name="position" type="text" onChange={this.handleChangeCompany} />
+                    <input id={i} placeholder="Position" name="position" type="text" onChange={this.handleChangeExperience} />
                   </label>
                   <label>
-                    <input id={i} placeholder="City" name="workCity" type="text" onChange={this.handleChangeCompany} />
+                    <input id={i} placeholder="City" name="workCity" type="text" onChange={this.handleChangeExperience} />
                   </label>
                   <label>
-                    <input id={i} placeholder="From" name="workFrom" type="text" onChange={this.handleChangeCompany} />
+                    <input id={i} placeholder="From" name="workFrom" type="text" onChange={this.handleChangeExperience} />
                   </label>
                   <label>
-                    <input id={i} placeholder="To" name="workTo" type="text" onChange={this.handleChangeCompany} />
+                    <input id={i} placeholder="To" name="workTo" type="text" onChange={this.handleChangeExperience} />
                   </label>
                   <label>
-                    <input id={i} placeholder="Description" name="workDesc" type="textarea" onChange={this.handleChangeCompany} />
+                    <input id={i} placeholder="Description" name="workDesc" type="textarea" onChange={this.handleChangeExperience} />
                   </label>
                   <button id={i} type="button">Delete</button>
                 </div>
               );
             })}
-            <button type="button" onClick={this.handleAddCompany}>Add</button>
+            <button type="button" onClick={this.handleAddExperience}>Add</button>
           </div>
 
           <div>
@@ -174,8 +174,8 @@ class App extends React.Component {
 
           <Overview 
             personal={this.state.personal}
-            companies={this.state.companies}
-            schools={this.state.schools}
+            experiences={this.state.experiences}
+            educations={this.state.educations}
           />
         </form>
       </div>
