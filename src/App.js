@@ -4,8 +4,8 @@ import Overview from "./components/Overview";
 
 class App extends React.Component {
   constructor(props) {
-  super(props);
-  this.state = {
+    super(props);
+    this.state = {
       personal: {
         name: '',
         title: '',
@@ -29,11 +29,12 @@ class App extends React.Component {
         studyFrom: '',
         studyTo: '',
       }],
-  };
+    };
 
-  this.handleChange = this.handleChange.bind(this);
-  this.handleChangeCompany = this.handleChangeCompany.bind(this);
-  this.handleChangeSchool = this.handleChangeSchool.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleChangeCompany = this.handleChangeCompany.bind(this);
+    this.handleChangeSchool = this.handleChangeSchool.bind(this);
+    this.handleAddCompany = this.handleAddCompany.bind(this);
   }
 
   handleChange(event) {
@@ -74,6 +75,20 @@ class App extends React.Component {
     this.setState({ schools: updated }, () => { console.log(this.state) });
   }
 
+  handleAddCompany(event) {
+    const added = this.state.companies.concat(
+      {
+        companyName: '',
+        position: '',
+        workCity: '',
+        workFrom: '',
+        workTo: '',
+        workDesc: '',
+      }
+    );
+    this.setState({ companies: added }, () => { console.log(this.state) });
+  }
+
   render() {
     return (
       <div>
@@ -102,43 +117,55 @@ class App extends React.Component {
 
           <div>
             <h4>Work Experience</h4>
-            <label>
-              <input id="0" placeholder="Company Name" name="companyName" type="text" onChange={this.handleChangeCompany} />
-            </label>
-            <label>
-              <input id="0" placeholder="Position" name="position" type="text" onChange={this.handleChangeCompany} />
-            </label>
-            <label>
-              <input id="0" placeholder="City" name="workCity" type="text" onChange={this.handleChangeCompany} />
-            </label>
-            <label>
-              <input id="0" placeholder="From" name="workFrom" type="text" onChange={this.handleChangeCompany} />
-            </label>
-            <label>
-              <input id="0" placeholder="To" name="workTo" type="text" onChange={this.handleChangeCompany} />
-            </label>
-            <label>
-              <input id="0" placeholder="Description" name="workDesc" type="textarea" onChange={this.handleChangeCompany} />
-            </label>
+            {this.state.companies.map((company, i) => {
+              return (
+                <div key={i}>
+                  <label>
+                    <input id={i} placeholder="Company Name" name="companyName" type="text" onChange={this.handleChangeCompany} />
+                  </label>
+                  <label>
+                    <input id={i} placeholder="Position" name="position" type="text" onChange={this.handleChangeCompany} />
+                  </label>
+                  <label>
+                    <input id={i} placeholder="City" name="workCity" type="text" onChange={this.handleChangeCompany} />
+                  </label>
+                  <label>
+                    <input id={i} placeholder="From" name="workFrom" type="text" onChange={this.handleChangeCompany} />
+                  </label>
+                  <label>
+                    <input id={i} placeholder="To" name="workTo" type="text" onChange={this.handleChangeCompany} />
+                  </label>
+                  <label>
+                    <input id={i} placeholder="Description" name="workDesc" type="textarea" onChange={this.handleChangeCompany} />
+                  </label>
+                  <button id={i} type="button">Delete</button>
+                </div>
+              );
+            })}
+            <button type="button" onClick={this.handleAddCompany}>Add</button>
           </div>
 
           <div>
             <h4>Education</h4>
-            <label>
-              <input id="0" placeholder="School Name" name="schoolName" type="text" onChange={this.handleChangeSchool} />
-            </label>
-            <label>
-              <input id="0" placeholder="Degree" name="degree" type="text" onChange={this.handleChangeSchool} />
-            </label>
-            <label>
-              <input id="0" placeholder="Title of Study" name="studyTitle" type="text" onChange={this.handleChangeSchool} />
-            </label>
-            <label>
-              <input id="0" placeholder="From" name="studyFrom" type="text" onChange={this.handleChangeSchool} />
-            </label>
-            <label>
-              <input id="0" placeholder="To" name="studyTo" type="text" onChange={this.handleChangeSchool} />
-            </label>
+            <div>
+              <label>
+                <input id="0" placeholder="School Name" name="schoolName" type="text" onChange={this.handleChangeSchool} />
+              </label>
+              <label>
+                <input id="0" placeholder="Degree" name="degree" type="text" onChange={this.handleChangeSchool} />
+              </label>
+              <label>
+                <input id="0" placeholder="Title of Study" name="studyTitle" type="text" onChange={this.handleChangeSchool} />
+              </label>
+              <label>
+                <input id="0" placeholder="From" name="studyFrom" type="text" onChange={this.handleChangeSchool} />
+              </label>
+              <label>
+                <input id="0" placeholder="To" name="studyTo" type="text" onChange={this.handleChangeSchool} />
+              </label>
+              <button type="button">Delete</button>
+            </div>
+            <button type="button">Add</button>
           </div>
           
           <div>
