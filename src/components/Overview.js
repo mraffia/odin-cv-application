@@ -2,14 +2,16 @@ import React from 'react';
 
 class Overview extends React.Component {    
     render() {
+        const personal = this.props.personal;
+
         return (
             <div>
-                <h1>{this.props.name}</h1>
-                <h4>{this.props.title}</h4>
-                <div>{this.props.email}</div>
-                <div>{this.props.phone}</div>
-                <div>{this.props.linkedin}</div>
-                <div>{this.props.github}</div>
+                <h1>{personal.name}</h1>
+                <h4>{personal.title}</h4>
+                <div>{personal.email}</div>
+                <div>{personal.phone}</div>
+                <div>{personal.linkedin}</div>
+                <div>{personal.github}</div>
             </div>
         );
     }

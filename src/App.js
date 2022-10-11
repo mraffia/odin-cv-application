@@ -6,41 +6,78 @@ class App extends React.Component {
   constructor(props) {
   super(props);
   this.state = {
-      name: '',
-      title: '',
-      email: '',
-      phone: '',
-      linkedin: '',
-      github: '',
-      schoolName: '',
-      degree: '',
-      studyTitle: '',
-      studyFrom: '',
-      studyTo: '',
-      companyName: '',
-      position: '',
-      workCity: '',
-      workFrom: '',
-      workTo: '',
-      workDesc: '',
-      schools: {},
-      companies: {},
+      personal: {
+        name: '',
+        title: '',
+        email: '',
+        phone: '',
+        linkedin: '',
+        github: '',
+      },
+      companies: [{
+        companyName: '',
+        position: '',
+        workCity: '',
+        workFrom: '',
+        workTo: '',
+        workDesc: '',
+      }],
+      schools: [{
+        schoolName: '',
+        degree: '',
+        studyTitle: '',
+        studyFrom: '',
+        studyTo: '',
+      }],
   };
 
   this.handleChange = this.handleChange.bind(this);
+  this.handleChangeCompany = this.handleChangeCompany.bind(this);
+  this.handleChangeSchool = this.handleChangeSchool.bind(this);
   }
 
   handleChange(event) {
     const value = event.target.value;
     const name = event.target.name;
+    const personal = { ...this.state.personal, [name]: value };
 
-    this.setState({ [name]: value });
+    this.setState({ personal }, () => { console.log(this.state) });
+  }
+
+  handleChangeCompany(event) {
+    const value = event.target.value;
+    const name = event.target.name;
+    const index = Number(event.target.id);
+
+    const updated = this.state.companies.map((item, i) => {
+      if (i === index) {
+        item[name] = value;
+      }
+      return item;
+    });
+
+    this.setState({ companies: updated }, () => { console.log(this.state) });
+  }
+
+  handleChangeSchool(event) {
+    const value = event.target.value;
+    const name = event.target.name;
+    const index = Number(event.target.id);
+
+    const updated = this.state.schools.map((item, i) => {
+      if (i === index) {
+        item[name] = value;
+      }
+      return item;
+    });
+
+    this.setState({ schools: updated }, () => { console.log(this.state) });
   }
 
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <div>
             <h4>Personal Information</h4>
             <label>
@@ -66,41 +103,41 @@ class App extends React.Component {
           <div>
             <h4>Work Experience</h4>
             <label>
-              <input placeholder="Company Name" name="companyName" type="text" onChange={this.handleChange} />
+              <input id="0" placeholder="Company Name" name="companyName" type="text" onChange={this.handleChangeCompany} />
             </label>
             <label>
-              <input placeholder="Position" name="position" type="text" onChange={this.handleChange} />
+              <input id="0" placeholder="Position" name="position" type="text" onChange={this.handleChangeCompany} />
             </label>
             <label>
-              <input placeholder="City" name="workCity" type="text" onChange={this.handleChange} />
+              <input id="0" placeholder="City" name="workCity" type="text" onChange={this.handleChangeCompany} />
             </label>
             <label>
-              <input placeholder="From" name="workFrom" type="text" onChange={this.handleChange} />
+              <input id="0" placeholder="From" name="workFrom" type="text" onChange={this.handleChangeCompany} />
             </label>
             <label>
-              <input placeholder="To" name="workTo" type="text" onChange={this.handleChange} />
+              <input id="0" placeholder="To" name="workTo" type="text" onChange={this.handleChangeCompany} />
             </label>
             <label>
-              <input placeholder="Description" name="workDesc" type="textarea" onChange={this.handleChange} />
+              <input id="0" placeholder="Description" name="workDesc" type="textarea" onChange={this.handleChangeCompany} />
             </label>
           </div>
 
           <div>
             <h4>Education</h4>
             <label>
-              <input placeholder="School Name" name="schoolName" type="text" onChange={this.handleChange} />
+              <input id="0" placeholder="School Name" name="schoolName" type="text" onChange={this.handleChangeSchool} />
             </label>
             <label>
-              <input placeholder="Degree" name="degree" type="text" onChange={this.handleChange} />
+              <input id="0" placeholder="Degree" name="degree" type="text" onChange={this.handleChangeSchool} />
             </label>
             <label>
-              <input placeholder="Title of Study" name="studyTitle" type="text" onChange={this.handleChange} />
+              <input id="0" placeholder="Title of Study" name="studyTitle" type="text" onChange={this.handleChangeSchool} />
             </label>
             <label>
-              <input placeholder="From" name="studyFrom" type="text" onChange={this.handleChange} />
+              <input id="0" placeholder="From" name="studyFrom" type="text" onChange={this.handleChangeSchool} />
             </label>
             <label>
-              <input placeholder="To" name="studyTo" type="text" onChange={this.handleChange} />
+              <input id="0" placeholder="To" name="studyTo" type="text" onChange={this.handleChangeSchool} />
             </label>
           </div>
           
@@ -109,12 +146,9 @@ class App extends React.Component {
           </div>
 
           <Overview 
-            name={this.state.name} 
-            title={this.state.title}
-            email={this.state.email} 
-            phone={this.state.phone}
-            linkedin={this.state.linkedin} 
-            github={this.state.github}
+            personal={this.state.personal}
+            companies={this.state.companies}
+            schools={this.state.schools}
           />
         </form>
       </div>
