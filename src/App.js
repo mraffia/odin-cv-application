@@ -5,17 +5,19 @@ class App extends React.Component {
   constructor(props) {
   super(props);
   this.state = {
-      nameValue: '',
-      emailValue: '',
-      phoneValue: '',
-      schoolValue: '',
-      titleValue: '',
-      dateValue: '',
-      companyValue: '',
-      positionValue: '',
-      fromValue: '',
-      untilValue: '',
-      descValue: '',
+      name: '',
+      title: '',
+      email: '',
+      phone: '',
+      schoolName: '',
+      studyTitle: '',
+      studyFrom: '',
+      studyTo: '',
+      companyName: '',
+      positionTitle: '',
+      workFrom: '',
+      workTo: '',
+      workDesc: '',
       schools: {},
       companies: {},
   };
@@ -41,45 +43,48 @@ class App extends React.Component {
           <div>
             <h4>Personal Information</h4>
             <label>
-              <input placeholder="Name" name="nameValue" type="text" value={this.state.nameValue} onChange={this.handleChange} />
+              <input placeholder="Name" name="name" type="text" onChange={this.handleChange} />
             </label>
             <label>
-              <input placeholder="Email" name="emailValue" type="email" value={this.state.emailValue} onChange={this.handleChange} />
+              <input placeholder="Email" name="email" type="email" onChange={this.handleChange} />
             </label>
             <label>
-              <input placeholder="Phone Number" name="phoneValue" type="text" value={this.state.phoneValue} onChange={this.handleChange} />
+              <input placeholder="Phone Number" name="phone" type="text" onChange={this.handleChange} />
             </label>
           </div>
 
           <div>
             <h4>Work Experience</h4>
             <label>
-              <input placeholder="School Name" name="schoolValue" type="text" value={this.state.schoolValue} onChange={this.handleChange} />
+              <input placeholder="Company Name" name="companyName" type="text" onChange={this.handleChange} />
             </label>
             <label>
-              <input placeholder="Title of Study" name="titleValue" type="text" value={this.state.titleValue} onChange={this.handleChange} />
+              <input placeholder="Position Title" name="positionTitle" type="text" onChange={this.handleChange} />
             </label>
             <label>
-              <input placeholder="Date of Study" name="dateValue" type="text" value={this.state.dateValue} onChange={this.handleChange} />
+              <input placeholder="From" name="workFrom" type="text" onChange={this.handleChange} />
+            </label>
+            <label>
+              <input placeholder="To" name="workTo" type="text" onChange={this.handleChange} />
+            </label>
+            <label>
+              <input placeholder="Description" name="workDesc" type="textarea" onChange={this.handleChange} />
             </label>
           </div>
 
           <div>
             <h4>Education</h4>
             <label>
-              <input placeholder="Company Name" name="companyValue" type="text" value={this.state.companyValue} onChange={this.handleChange} />
+              <input placeholder="School Name" name="schoolName" type="text" onChange={this.handleChange} />
             </label>
             <label>
-              <input placeholder="Position Title" name="positionValue" type="text" value={this.state.positionValue} onChange={this.handleChange} />
+              <input placeholder="Title of Study" name="studyTitle" type="text" onChange={this.handleChange} />
             </label>
             <label>
-              <input placeholder="From" name="fromValue" type="text" value={this.state.fromValue} onChange={this.handleChange} />
+              <input placeholder="From" name="studyFrom" type="text" onChange={this.handleChange} />
             </label>
             <label>
-              <input placeholder="Until" name="untilValue" type="text" value={this.state.untilValue} onChange={this.handleChange} />
-            </label>
-            <label>
-              <input placeholder="Description" name="descValue" type="textarea" value={this.state.descValue} onChange={this.handleChange} />
+              <input placeholder="To" name="studyTo" type="text" onChange={this.handleChange} />
             </label>
           </div>
           
