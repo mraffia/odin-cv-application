@@ -16,8 +16,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <GeneralInfo />
-        {/* <EducationalExp />
-        <PracticalExp /> */}
+        <EducationalExp />
+        {/* <PracticalExp /> */}
       </div>
     );
   }
