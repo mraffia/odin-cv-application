@@ -36,6 +36,8 @@ class App extends React.Component {
     this.handleChangeEducation = this.handleChangeEducation.bind(this);
     this.handleAddExperience = this.handleAddExperience.bind(this);
     this.handleAddEducation = this.handleAddEducation.bind(this);
+    this.handleDeleteExperience = this.handleDeleteExperience.bind(this);
+    // this.handleDeleteEducation = this.handleDeleteEducation.bind(this);
   }
 
   handleChange(event) {
@@ -103,6 +105,16 @@ class App extends React.Component {
     this.setState({ educations: added }, () => { console.log(this.state) });
   }
 
+  handleDeleteExperience(event) {
+    const index = Number(event.target.id);
+    const deleted = this.state.experiences.filter((item, i) => {
+      if (index !== i) {
+        return item;
+      }
+    });
+    this.setState({ experiences: deleted }, () => { console.log(this.state) });
+  }
+
   render() {
     return (
       <div>
@@ -152,7 +164,7 @@ class App extends React.Component {
                   <label>
                     <input id={i} placeholder="Description" name="workDesc" type="textarea" onChange={this.handleChangeExperience} />
                   </label>
-                  <button id={i} type="button">Delete</button>
+                  <button id={i} type="button" onClick={this.handleDeleteExperience}>Delete</button>
                 </div>
               );
             })}
