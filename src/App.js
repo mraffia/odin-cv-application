@@ -32,8 +32,7 @@ class App extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleChangeExperience = this.handleChangeExperience.bind(this);
-    this.handleChangeEducation = this.handleChangeEducation.bind(this);
+    this.handleChangeExpOrEdu = this.handleChangeExpOrEdu.bind(this);
     this.handleAddExperience = this.handleAddExperience.bind(this);
     this.handleAddEducation = this.handleAddEducation.bind(this);
     this.handleDeleteExperience = this.handleDeleteExperience.bind(this);
@@ -48,34 +47,30 @@ class App extends React.Component {
     this.setState({ personal }, () => { console.log(this.state) });
   }
 
-  handleChangeExperience(event) {
+  handleChangeExpOrEdu(event) {
     const value = event.target.value;
     const name = event.target.name;
     const index = Number(event.target.id);
 
-    const updated = this.state.experiences.map((item, i) => {
+    let expOrEdu;
+    let expOrEduCopy;
+
+    if (event.target.className.slice(4) === "Experience") {
+      expOrEdu = "experiences";
+      expOrEduCopy = this.state.experiences;
+    } else if (event.target.className.slice(4) === "Education") {
+      expOrEdu = "educations";
+      expOrEduCopy = this.state.educations;
+    }
+
+    const updated = expOrEduCopy.map((item, i) => {
       if (i === index) {
         item[name] = value;
       }
       return item;
     });
 
-    this.setState({ experiences: updated }, () => { console.log(this.state) });
-  }
-
-  handleChangeEducation(event) {
-    const value = event.target.value;
-    const name = event.target.name;
-    const index = Number(event.target.id);
-
-    const updated = this.state.educations.map((item, i) => {
-      if (i === index) {
-        item[name] = value;
-      }
-      return item;
-    });
-
-    this.setState({ educations: updated }, () => { console.log(this.state) });
+    this.setState({ [expOrEdu]: updated }, () => { console.log(this.state) });
   }
 
   handleAddExperience(event) {
@@ -132,22 +127,22 @@ class App extends React.Component {
           <div>
             <h4>Personal Information</h4>
             <label>
-              <input placeholder="Name" name="name" type="text" value={this.state.personal.name} onChange={this.handleChange} />
+              <input className="formPersonal" placeholder="Name" name="name" type="text" value={this.state.personal.name} onChange={this.handleChange} />
             </label>
             <label>
-              <input placeholder="Title" name="title" type="text" value={this.state.personal.title} onChange={this.handleChange} />
+              <input className="formPersonal" placeholder="Title" name="title" type="text" value={this.state.personal.title} onChange={this.handleChange} />
             </label>
             <label>
-              <input placeholder="Email" name="email" type="email" value={this.state.personal.email} onChange={this.handleChange} />
+              <input className="formPersonal" placeholder="Email" name="email" type="email" value={this.state.personal.email} onChange={this.handleChange} />
             </label>
             <label>
-              <input placeholder="Phone Number" name="phone" type="text" value={this.state.personal.phone} onChange={this.handleChange} />
+              <input className="formPersonal" placeholder="Phone Number" name="phone" type="text" value={this.state.personal.phone} onChange={this.handleChange} />
             </label>
             <label>
-              <input placeholder="LinkedIn (profile link)" name="linkedin" type="text" value={this.state.personal.linkedin} onChange={this.handleChange} />
+              <input className="formPersonal" placeholder="LinkedIn (profile link)" name="linkedin" type="text" value={this.state.personal.linkedin} onChange={this.handleChange} />
             </label>
             <label>
-              <input placeholder="GitHub (profile link)" name="github" type="text" value={this.state.personal.github} onChange={this.handleChange} />
+              <input className="formPersonal" placeholder="GitHub (profile link)" name="github" type="text" value={this.state.personal.github} onChange={this.handleChange} />
             </label>
           </div>
 
@@ -157,28 +152,28 @@ class App extends React.Component {
               return (
                 <div key={i}>
                   <label>
-                    <input id={i} placeholder="Company Name" name="companyName" type="text" value={this.state.experiences[i].companyName} onChange={this.handleChangeExperience} />
+                    <input id={i} className="formExperience" placeholder="Company Name" name="companyName" type="text" value={this.state.experiences[i].companyName} onChange={this.handleChangeExpOrEdu} />
                   </label>
                   <label>
-                    <input id={i} placeholder="Position" name="position" type="text" value={this.state.experiences[i].position} onChange={this.handleChangeExperience} />
+                    <input id={i} className="formExperience" placeholder="Position" name="position" type="text" value={this.state.experiences[i].position} onChange={this.handleChangeExpOrEdu} />
                   </label>
                   <label>
-                    <input id={i} placeholder="City" name="workCity" type="text" value={this.state.experiences[i].workCity} onChange={this.handleChangeExperience} />
+                    <input id={i} className="formExperience" placeholder="City" name="workCity" type="text" value={this.state.experiences[i].workCity} onChange={this.handleChangeExpOrEdu} />
                   </label>
                   <label>
-                    <input id={i} placeholder="From" name="workFrom" type="text" value={this.state.experiences[i].workFrom} onChange={this.handleChangeExperience} />
+                    <input id={i} className="formExperience" placeholder="From" name="workFrom" type="text" value={this.state.experiences[i].workFrom} onChange={this.handleChangeExpOrEdu} />
                   </label>
                   <label>
-                    <input id={i} placeholder="To" name="workTo" type="text" value={this.state.experiences[i].workTo} onChange={this.handleChangeExperience} />
+                    <input id={i} className="formExperience" placeholder="To" name="workTo" type="text" value={this.state.experiences[i].workTo} onChange={this.handleChangeExpOrEdu} />
                   </label>
                   <label>
-                    <input id={i} placeholder="Description" name="workDesc" type="textarea" value={this.state.experiences[i].workDesc} onChange={this.handleChangeExperience} />
+                    <input id={i} className="formExperience" placeholder="Description" name="workDesc" type="textarea" value={this.state.experiences[i].workDesc} onChange={this.handleChangeExpOrEdu} />
                   </label>
-                  <button id={i} type="button" onClick={this.handleDeleteExperience}>Delete</button>
+                  <button id={i} className="delExperience" type="button" onClick={this.handleDeleteExperience}>Delete</button>
                 </div>
               );
             })}
-            <button type="button" onClick={this.handleAddExperience}>Add</button>
+            <button className="formExperience" type="button" onClick={this.handleAddExperience}>Add</button>
           </div>
 
           <div>
@@ -187,25 +182,25 @@ class App extends React.Component {
               return (
                 <div key={i}>
                   <label>
-                    <input id={i} placeholder="School Name" name="schoolName" type="text" value={this.state.educations[i].schoolName} onChange={this.handleChangeEducation} />
+                    <input id={i} className="formEducation" placeholder="School Name" name="schoolName" type="text" value={this.state.educations[i].schoolName} onChange={this.handleChangeExpOrEdu} />
                   </label>
                   <label>
-                    <input id={i} placeholder="Degree" name="degree" type="text" value={this.state.educations[i].degree} onChange={this.handleChangeEducation} />
+                    <input id={i} className="formEducation" placeholder="Degree" name="degree" type="text" value={this.state.educations[i].degree} onChange={this.handleChangeExpOrEdu} />
                   </label>
                   <label>
-                    <input id={i} placeholder="Title of Study" name="studyTitle" type="text" value={this.state.educations[i].studyTitle} onChange={this.handleChangeEducation} />
+                    <input id={i} className="formEducation" placeholder="Title of Study" name="studyTitle" type="text" value={this.state.educations[i].studyTitle} onChange={this.handleChangeExpOrEdu} />
                   </label>
                   <label>
-                    <input id={i} placeholder="From" name="studyFrom" type="text" value={this.state.educations[i].studyFrom} onChange={this.handleChangeEducation} />
+                    <input id={i} className="formEducation" placeholder="From" name="studyFrom" type="text" value={this.state.educations[i].studyFrom} onChange={this.handleChangeExpOrEdu} />
                   </label>
                   <label>
-                    <input id={i} placeholder="To" name="studyTo" type="text" value={this.state.educations[i].studyTo} onChange={this.handleChangeEducation} />
+                    <input id={i} className="formEducation" placeholder="To" name="studyTo" type="text" value={this.state.educations[i].studyTo} onChange={this.handleChangeExpOrEdu} />
                   </label>
-                  <button id={i} type="button" onClick={this.handleDeleteEducation}>Delete</button>
+                  <button id={i} className="delEducation" type="button" onClick={this.handleDeleteEducation}>Delete</button>
                 </div>
               );
             })}
-            <button type="button" onClick={this.handleAddEducation}>Add</button>
+            <button className="addEducation" type="button" onClick={this.handleAddEducation}>Add</button>
           </div>
           
           <div>
