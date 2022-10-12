@@ -156,9 +156,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          <form>
-            <div>
+        <div className="form-container">
+          <form className="form">
+            <div className="form-subcontainer">
               <h4>Personal Information</h4>
               <label>
                 <input className="form-personal" placeholder="Name" name="name" type="text" value={this.state.personal.name} onChange={this.handleChange} />
@@ -180,7 +180,7 @@ class App extends React.Component {
               </label>
             </div>
 
-            <div>
+            <div className="form-subcontainer">
               <h4>Work Experience</h4>
               {this.state.experiences.map((experience, i) => {
                 return (
@@ -210,7 +210,7 @@ class App extends React.Component {
               <button className="add-experience" type="button" onClick={this.handleAddExpOrEdu}>Add</button>
             </div>
 
-            <div>
+            <div className="form-subcontainer">
               <h4>Education</h4>
               {this.state.educations.map((education, i) => {
                 return (
@@ -237,7 +237,7 @@ class App extends React.Component {
               <button className="add-education" type="button" onClick={this.handleAddExpOrEdu}>Add</button>
             </div>
             
-            <div>
+            <div className="reset-container">
               <input type="button" onClick={this.handleReset}/>
             </div>
           </form>
