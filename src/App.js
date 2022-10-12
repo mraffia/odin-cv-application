@@ -35,6 +35,7 @@ class App extends React.Component {
     this.handleChangeExpOrEdu = this.handleChangeExpOrEdu.bind(this);
     this.handleAddExpOrEdu = this.handleAddExpOrEdu.bind(this);
     this.handleDeleteExpOrEdu = this.handleDeleteExpOrEdu.bind(this);
+    this.handleReset = this.handleReset.bind(this);
   }
 
   handleChange(event) {
@@ -126,6 +127,34 @@ class App extends React.Component {
     this.setState({ [expOrEdu]: deleted }, () => { console.log(this.state) });
   }
 
+  handleReset(event) {
+    this.setState({
+      personal: {
+        name: '',
+        title: '',
+        email: '',
+        phone: '',
+        linkedin: '',
+        github: '',
+      },
+      experiences: [{
+        companyName: '',
+        position: '',
+        workCity: '',
+        workFrom: '',
+        workTo: '',
+        workDesc: '',
+      }],
+      educations: [{
+        schoolName: '',
+        degree: '',
+        studyTitle: '',
+        studyFrom: '',
+        studyTo: '',
+      }],
+    }, () => { console.log(this.state) });
+  }
+
   render() {
     return (
       <div>
@@ -210,7 +239,7 @@ class App extends React.Component {
           </div>
           
           <div>
-            <input type="reset" />
+            <input type="reset" onClick={this.handleReset}/>
           </div>
 
           <Overview 
