@@ -33,8 +33,7 @@ class App extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeExpOrEdu = this.handleChangeExpOrEdu.bind(this);
-    this.handleAddExperience = this.handleAddExperience.bind(this);
-    this.handleAddEducation = this.handleAddEducation.bind(this);
+    this.handleAddExpOrEdu = this.handleAddExpOrEdu.bind(this);
     this.handleDeleteExperience = this.handleDeleteExperience.bind(this);
     this.handleDeleteEducation = this.handleDeleteEducation.bind(this);
   }
@@ -73,31 +72,37 @@ class App extends React.Component {
     this.setState({ [expOrEdu]: updated }, () => { console.log(this.state) });
   }
 
-  handleAddExperience(event) {
-    const added = this.state.experiences.concat(
-      {
-        companyName: '',
-        position: '',
-        workCity: '',
-        workFrom: '',
-        workTo: '',
-        workDesc: '',
-      }
-    );
-    this.setState({ experiences: added }, () => { console.log(this.state) });
-  }
+  handleAddExpOrEdu(event) {
+    let expOrEdu;
+    let added;
 
-  handleAddEducation(event) {
-    const added = this.state.educations.concat(
-      {
-        schoolName: '',
-        degree: '',
-        studyTitle: '',
-        studyFrom: '',
-        studyTo: '',
-      }
-    );
-    this.setState({ educations: added }, () => { console.log(this.state) });
+    console.log(event.target.className.slice(3));
+
+    if (event.target.className.slice(3) === "Experience") {
+      expOrEdu = "experiences";
+      added = this.state.experiences.concat(
+        {
+          companyName: '',
+          position: '',
+          workCity: '',
+          workFrom: '',
+          workTo: '',
+          workDesc: '',
+        }
+      );
+    } else if (event.target.className.slice(3) === "Education") {
+      expOrEdu = "educations";
+      added = this.state.educations.concat(
+        {
+          schoolName: '',
+          degree: '',
+          studyTitle: '',
+          studyFrom: '',
+          studyTo: '',
+        }
+      );
+    }
+    this.setState({ [expOrEdu]: added }, () => { console.log(this.state) });
   }
 
   handleDeleteExperience(event) {
@@ -173,7 +178,7 @@ class App extends React.Component {
                 </div>
               );
             })}
-            <button className="formExperience" type="button" onClick={this.handleAddExperience}>Add</button>
+            <button className="addExperience" type="button" onClick={this.handleAddExpOrEdu}>Add</button>
           </div>
 
           <div>
@@ -200,7 +205,7 @@ class App extends React.Component {
                 </div>
               );
             })}
-            <button className="addEducation" type="button" onClick={this.handleAddEducation}>Add</button>
+            <button className="addEducation" type="button" onClick={this.handleAddExpOrEdu}>Add</button>
           </div>
           
           <div>
