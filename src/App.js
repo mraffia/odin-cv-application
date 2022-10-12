@@ -122,22 +122,22 @@ class App extends React.Component {
           <div>
             <h4>Personal Information</h4>
             <label>
-              <input placeholder="Name" name="name" type="text" onChange={this.handleChange} />
+              <input placeholder="Name" name="name" type="text" value={this.state.personal.name} onChange={this.handleChange} />
             </label>
             <label>
-              <input placeholder="Title" name="title" type="text" onChange={this.handleChange} />
+              <input placeholder="Title" name="title" type="text" value={this.state.personal.title} onChange={this.handleChange} />
             </label>
             <label>
-              <input placeholder="Email" name="email" type="email" onChange={this.handleChange} />
+              <input placeholder="Email" name="email" type="email" value={this.state.personal.email} onChange={this.handleChange} />
             </label>
             <label>
-              <input placeholder="Phone Number" name="phone" type="text" onChange={this.handleChange} />
+              <input placeholder="Phone Number" name="phone" type="text" value={this.state.personal.phone} onChange={this.handleChange} />
             </label>
             <label>
-              <input placeholder="LinkedIn (profile link)" name="linkedin" type="text" onChange={this.handleChange} />
+              <input placeholder="LinkedIn (profile link)" name="linkedin" type="text" value={this.state.personal.linkedin} onChange={this.handleChange} />
             </label>
             <label>
-              <input placeholder="GitHub (profile link)" name="github" type="text" onChange={this.handleChange} />
+              <input placeholder="GitHub (profile link)" name="github" type="text" value={this.state.personal.github} onChange={this.handleChange} />
             </label>
           </div>
 
@@ -147,22 +147,22 @@ class App extends React.Component {
               return (
                 <div key={i}>
                   <label>
-                    <input id={i} placeholder="Company Name" name="companyName" type="text" onChange={this.handleChangeExperience} />
+                    <input id={i} placeholder="Company Name" name="companyName" type="text" value={this.state.experiences[i].companyName} onChange={this.handleChangeExperience} />
                   </label>
                   <label>
-                    <input id={i} placeholder="Position" name="position" type="text" onChange={this.handleChangeExperience} />
+                    <input id={i} placeholder="Position" name="position" type="text" value={this.state.experiences[i].position} onChange={this.handleChangeExperience} />
                   </label>
                   <label>
-                    <input id={i} placeholder="City" name="workCity" type="text" onChange={this.handleChangeExperience} />
+                    <input id={i} placeholder="City" name="workCity" type="text" value={this.state.experiences[i].workCity} onChange={this.handleChangeExperience} />
                   </label>
                   <label>
-                    <input id={i} placeholder="From" name="workFrom" type="text" onChange={this.handleChangeExperience} />
+                    <input id={i} placeholder="From" name="workFrom" type="text" value={this.state.experiences[i].workFrom} onChange={this.handleChangeExperience} />
                   </label>
                   <label>
-                    <input id={i} placeholder="To" name="workTo" type="text" onChange={this.handleChangeExperience} />
+                    <input id={i} placeholder="To" name="workTo" type="text" value={this.state.experiences[i].workTo} onChange={this.handleChangeExperience} />
                   </label>
                   <label>
-                    <input id={i} placeholder="Description" name="workDesc" type="textarea" onChange={this.handleChangeExperience} />
+                    <input id={i} placeholder="Description" name="workDesc" type="textarea" value={this.state.experiences[i].workDesc} onChange={this.handleChangeExperience} />
                   </label>
                   <button id={i} type="button" onClick={this.handleDeleteExperience}>Delete</button>
                 </div>
@@ -177,19 +177,19 @@ class App extends React.Component {
               return (
                 <div key={i}>
                   <label>
-                    <input id={i} placeholder="School Name" name="schoolName" type="text" onChange={this.handleChangeEducation} />
+                    <input id={i} placeholder="School Name" name="schoolName" type="text" value={this.state.educations[i].schoolName} onChange={this.handleChangeEducation} />
                   </label>
                   <label>
-                    <input id={i} placeholder="Degree" name="degree" type="text" onChange={this.handleChangeEducation} />
+                    <input id={i} placeholder="Degree" name="degree" type="text" value={this.state.educations[i].degree} onChange={this.handleChangeEducation} />
                   </label>
                   <label>
-                    <input id={i} placeholder="Title of Study" name="studyTitle" type="text" onChange={this.handleChangeEducation} />
+                    <input id={i} placeholder="Title of Study" name="studyTitle" type="text" value={this.state.educations[i].studyTitle} onChange={this.handleChangeEducation} />
                   </label>
                   <label>
-                    <input id={i} placeholder="From" name="studyFrom" type="text" onChange={this.handleChangeEducation} />
+                    <input id={i} placeholder="From" name="studyFrom" type="text" value={this.state.educations[i].studyFrom} onChange={this.handleChangeEducation} />
                   </label>
                   <label>
-                    <input id={i} placeholder="To" name="studyTo" type="text" onChange={this.handleChangeEducation} />
+                    <input id={i} placeholder="To" name="studyTo" type="text" value={this.state.educations[i].studyTo} onChange={this.handleChangeEducation} />
                   </label>
                   <button id={i} type="button">Delete</button>
                 </div>
