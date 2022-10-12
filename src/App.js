@@ -34,8 +34,7 @@ class App extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeExpOrEdu = this.handleChangeExpOrEdu.bind(this);
     this.handleAddExpOrEdu = this.handleAddExpOrEdu.bind(this);
-    this.handleDeleteExperience = this.handleDeleteExperience.bind(this);
-    this.handleDeleteEducation = this.handleDeleteEducation.bind(this);
+    this.handleDeleteExpOrEdu = this.handleDeleteExpOrEdu.bind(this);
   }
 
   handleChange(event) {
@@ -102,27 +101,29 @@ class App extends React.Component {
         }
       );
     }
+
     this.setState({ [expOrEdu]: added }, () => { console.log(this.state) });
   }
 
-  handleDeleteExperience(event) {
+  handleDeleteExpOrEdu(event) {
     const index = Number(event.target.id);
-    const deleted = this.state.experiences.filter((item, i) => {
-      if (index !== i) {
-        return item;
-      }
-    });
-    this.setState({ experiences: deleted }, () => { console.log(this.state) });
-  }
 
-  handleDeleteEducation(event) {
-    const index = Number(event.target.id);
-    const deleted = this.state.educations.filter((item, i) => {
-      if (index !== i) {
-        return item;
-      }
+    let expOrEdu;
+    let expOrEduCopy;
+
+    if (event.target.className.slice(3) === "Experience") {
+      expOrEdu = "experiences";
+      expOrEduCopy = this.state.experiences;
+    } else if (event.target.className.slice(3) === "Education") {
+      expOrEdu = "educations";
+      expOrEduCopy = this.state.educations;
+    }
+
+    const deleted = expOrEduCopy.filter((item, i) => {
+      return index !== i ? item : undefined;
     });
-    this.setState({ educations: deleted }, () => { console.log(this.state) });
+
+    this.setState({ [expOrEdu]: deleted }, () => { console.log(this.state) });
   }
 
   render() {
@@ -174,7 +175,7 @@ class App extends React.Component {
                   <label>
                     <input id={i} className="formExperience" placeholder="Description" name="workDesc" type="textarea" value={this.state.experiences[i].workDesc} onChange={this.handleChangeExpOrEdu} />
                   </label>
-                  <button id={i} className="delExperience" type="button" onClick={this.handleDeleteExperience}>Delete</button>
+                  <button id={i} className="delExperience" type="button" onClick={this.handleDeleteExpOrEdu}>Delete</button>
                 </div>
               );
             })}
@@ -201,7 +202,7 @@ class App extends React.Component {
                   <label>
                     <input id={i} className="formEducation" placeholder="To" name="studyTo" type="text" value={this.state.educations[i].studyTo} onChange={this.handleChangeExpOrEdu} />
                   </label>
-                  <button id={i} className="delEducation" type="button" onClick={this.handleDeleteEducation}>Delete</button>
+                  <button id={i} className="delEducation" type="button" onClick={this.handleDeleteExpOrEdu}>Delete</button>
                 </div>
               );
             })}
