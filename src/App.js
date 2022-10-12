@@ -54,10 +54,10 @@ class App extends React.Component {
     let expOrEdu;
     let expOrEduCopy;
 
-    if (event.target.className.slice(4) === "Experience") {
+    if (event.target.className.slice(5) === "experience") {
       expOrEdu = "experiences";
       expOrEduCopy = this.state.experiences;
-    } else if (event.target.className.slice(4) === "Education") {
+    } else if (event.target.className.slice(5) === "education") {
       expOrEdu = "educations";
       expOrEduCopy = this.state.educations;
     }
@@ -76,9 +76,7 @@ class App extends React.Component {
     let expOrEdu;
     let added;
 
-    console.log(event.target.className.slice(3));
-
-    if (event.target.className.slice(3) === "Experience") {
+    if (event.target.className.slice(4) === "experience") {
       expOrEdu = "experiences";
       added = this.state.experiences.concat(
         {
@@ -90,7 +88,7 @@ class App extends React.Component {
           workDesc: '',
         }
       );
-    } else if (event.target.className.slice(3) === "Education") {
+    } else if (event.target.className.slice(4) === "education") {
       expOrEdu = "educations";
       added = this.state.educations.concat(
         {
@@ -112,10 +110,10 @@ class App extends React.Component {
     let expOrEdu;
     let expOrEduCopy;
 
-    if (event.target.className.slice(3) === "Experience") {
+    if (event.target.className.slice(4) === "experience") {
       expOrEdu = "experiences";
       expOrEduCopy = this.state.experiences;
-    } else if (event.target.className.slice(3) === "Education") {
+    } else if (event.target.className.slice(4) === "education") {
       expOrEdu = "educations";
       expOrEduCopy = this.state.educations;
     }
@@ -158,96 +156,98 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <form>
-          <div>
-            <h4>Personal Information</h4>
-            <label>
-              <input className="formPersonal" placeholder="Name" name="name" type="text" value={this.state.personal.name} onChange={this.handleChange} />
-            </label>
-            <label>
-              <input className="formPersonal" placeholder="Title" name="title" type="text" value={this.state.personal.title} onChange={this.handleChange} />
-            </label>
-            <label>
-              <input className="formPersonal" placeholder="Email" name="email" type="email" value={this.state.personal.email} onChange={this.handleChange} />
-            </label>
-            <label>
-              <input className="formPersonal" placeholder="Phone Number" name="phone" type="text" value={this.state.personal.phone} onChange={this.handleChange} />
-            </label>
-            <label>
-              <input className="formPersonal" placeholder="LinkedIn (profile link)" name="linkedin" type="text" value={this.state.personal.linkedin} onChange={this.handleChange} />
-            </label>
-            <label>
-              <input className="formPersonal" placeholder="GitHub (profile link)" name="github" type="text" value={this.state.personal.github} onChange={this.handleChange} />
-            </label>
-          </div>
+        <div>
+          <form>
+            <div>
+              <h4>Personal Information</h4>
+              <label>
+                <input className="form-personal" placeholder="Name" name="name" type="text" value={this.state.personal.name} onChange={this.handleChange} />
+              </label>
+              <label>
+                <input className="form-personal" placeholder="Title" name="title" type="text" value={this.state.personal.title} onChange={this.handleChange} />
+              </label>
+              <label>
+                <input className="form-personal" placeholder="Email" name="email" type="email" value={this.state.personal.email} onChange={this.handleChange} />
+              </label>
+              <label>
+                <input className="form-personal" placeholder="Phone Number" name="phone" type="text" value={this.state.personal.phone} onChange={this.handleChange} />
+              </label>
+              <label>
+                <input className="form-personal" placeholder="LinkedIn (profile link)" name="linkedin" type="text" value={this.state.personal.linkedin} onChange={this.handleChange} />
+              </label>
+              <label>
+                <input className="form-personal" placeholder="GitHub (profile link)" name="github" type="text" value={this.state.personal.github} onChange={this.handleChange} />
+              </label>
+            </div>
 
-          <div>
-            <h4>Work Experience</h4>
-            {this.state.experiences.map((experience, i) => {
-              return (
-                <div key={i}>
-                  <label>
-                    <input id={i} className="formExperience" placeholder="Company Name" name="companyName" type="text" value={this.state.experiences[i].companyName} onChange={this.handleChangeExpOrEdu} />
-                  </label>
-                  <label>
-                    <input id={i} className="formExperience" placeholder="Position" name="position" type="text" value={this.state.experiences[i].position} onChange={this.handleChangeExpOrEdu} />
-                  </label>
-                  <label>
-                    <input id={i} className="formExperience" placeholder="City" name="workCity" type="text" value={this.state.experiences[i].workCity} onChange={this.handleChangeExpOrEdu} />
-                  </label>
-                  <label>
-                    <input id={i} className="formExperience" placeholder="From" name="workFrom" type="text" value={this.state.experiences[i].workFrom} onChange={this.handleChangeExpOrEdu} />
-                  </label>
-                  <label>
-                    <input id={i} className="formExperience" placeholder="To" name="workTo" type="text" value={this.state.experiences[i].workTo} onChange={this.handleChangeExpOrEdu} />
-                  </label>
-                  <label>
-                    <input id={i} className="formExperience" placeholder="Description" name="workDesc" type="textarea" value={this.state.experiences[i].workDesc} onChange={this.handleChangeExpOrEdu} />
-                  </label>
-                  <button id={i} className="delExperience" type="button" onClick={this.handleDeleteExpOrEdu}>Delete</button>
-                </div>
-              );
-            })}
-            <button className="addExperience" type="button" onClick={this.handleAddExpOrEdu}>Add</button>
-          </div>
+            <div>
+              <h4>Work Experience</h4>
+              {this.state.experiences.map((experience, i) => {
+                return (
+                  <div key={i}>
+                    <label>
+                      <input id={i} className="form-experience" placeholder="Company Name" name="companyName" type="text" value={this.state.experiences[i].companyName} onChange={this.handleChangeExpOrEdu} />
+                    </label>
+                    <label>
+                      <input id={i} className="form-experience" placeholder="Position" name="position" type="text" value={this.state.experiences[i].position} onChange={this.handleChangeExpOrEdu} />
+                    </label>
+                    <label>
+                      <input id={i} className="form-experience" placeholder="City" name="workCity" type="text" value={this.state.experiences[i].workCity} onChange={this.handleChangeExpOrEdu} />
+                    </label>
+                    <label>
+                      <input id={i} className="form-experience" placeholder="From" name="workFrom" type="text" value={this.state.experiences[i].workFrom} onChange={this.handleChangeExpOrEdu} />
+                    </label>
+                    <label>
+                      <input id={i} className="form-experience" placeholder="To" name="workTo" type="text" value={this.state.experiences[i].workTo} onChange={this.handleChangeExpOrEdu} />
+                    </label>
+                    <label>
+                      <input id={i} className="form-experience" placeholder="Description" name="workDesc" type="textarea" value={this.state.experiences[i].workDesc} onChange={this.handleChangeExpOrEdu} />
+                    </label>
+                    <button id={i} className="del-experience" type="button" onClick={this.handleDeleteExpOrEdu}>Delete</button>
+                  </div>
+                );
+              })}
+              <button className="add-experience" type="button" onClick={this.handleAddExpOrEdu}>Add</button>
+            </div>
 
-          <div>
-            <h4>Education</h4>
-            {this.state.educations.map((education, i) => {
-              return (
-                <div key={i}>
-                  <label>
-                    <input id={i} className="formEducation" placeholder="School Name" name="schoolName" type="text" value={this.state.educations[i].schoolName} onChange={this.handleChangeExpOrEdu} />
-                  </label>
-                  <label>
-                    <input id={i} className="formEducation" placeholder="Degree" name="degree" type="text" value={this.state.educations[i].degree} onChange={this.handleChangeExpOrEdu} />
-                  </label>
-                  <label>
-                    <input id={i} className="formEducation" placeholder="Title of Study" name="studyTitle" type="text" value={this.state.educations[i].studyTitle} onChange={this.handleChangeExpOrEdu} />
-                  </label>
-                  <label>
-                    <input id={i} className="formEducation" placeholder="From" name="studyFrom" type="text" value={this.state.educations[i].studyFrom} onChange={this.handleChangeExpOrEdu} />
-                  </label>
-                  <label>
-                    <input id={i} className="formEducation" placeholder="To" name="studyTo" type="text" value={this.state.educations[i].studyTo} onChange={this.handleChangeExpOrEdu} />
-                  </label>
-                  <button id={i} className="delEducation" type="button" onClick={this.handleDeleteExpOrEdu}>Delete</button>
-                </div>
-              );
-            })}
-            <button className="addEducation" type="button" onClick={this.handleAddExpOrEdu}>Add</button>
-          </div>
-          
-          <div>
-            <input type="reset" onClick={this.handleReset}/>
-          </div>
-
-          <Overview 
+            <div>
+              <h4>Education</h4>
+              {this.state.educations.map((education, i) => {
+                return (
+                  <div key={i}>
+                    <label>
+                      <input id={i} className="form-education" placeholder="School Name" name="schoolName" type="text" value={this.state.educations[i].schoolName} onChange={this.handleChangeExpOrEdu} />
+                    </label>
+                    <label>
+                      <input id={i} className="form-education" placeholder="Degree" name="degree" type="text" value={this.state.educations[i].degree} onChange={this.handleChangeExpOrEdu} />
+                    </label>
+                    <label>
+                      <input id={i} className="form-education" placeholder="Title of Study" name="studyTitle" type="text" value={this.state.educations[i].studyTitle} onChange={this.handleChangeExpOrEdu} />
+                    </label>
+                    <label>
+                      <input id={i} className="form-education" placeholder="From" name="studyFrom" type="text" value={this.state.educations[i].studyFrom} onChange={this.handleChangeExpOrEdu} />
+                    </label>
+                    <label>
+                      <input id={i} className="form-education" placeholder="To" name="studyTo" type="text" value={this.state.educations[i].studyTo} onChange={this.handleChangeExpOrEdu} />
+                    </label>
+                    <button id={i} className="del-education" type="button" onClick={this.handleDeleteExpOrEdu}>Delete</button>
+                  </div>
+                );
+              })}
+              <button className="add-education" type="button" onClick={this.handleAddExpOrEdu}>Add</button>
+            </div>
+            
+            <div>
+              <input type="button" onClick={this.handleReset}/>
+            </div>
+          </form>
+        </div>
+        
+        <Overview 
             personal={this.state.personal}
             experiences={this.state.experiences}
             educations={this.state.educations}
           />
-        </form>
       </div>
     );
   }
