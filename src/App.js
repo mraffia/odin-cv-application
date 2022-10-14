@@ -155,7 +155,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <div className="form-container">
           <form className="form">
             <div className="form-subcontainer">
@@ -238,7 +238,7 @@ class App extends React.Component {
             </div>
             
             <div className="reset-container">
-              <input type="button" onClick={this.handleReset}/>
+              <button className="reset" type="button" onClick={this.handleReset}>Reset</button>
             </div>
           </form>
         </div>
