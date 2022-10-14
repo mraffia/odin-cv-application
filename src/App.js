@@ -178,7 +178,7 @@ class App extends React.Component {
                     <input id={i} className="form-experience" placeholder="City" name="workCity" type="text" value={this.state.experiences[i].workCity} onChange={this.handleChangeExpOrEdu} />
                     <input id={i} className="form-experience" placeholder="From" name="workFrom" type="text" value={this.state.experiences[i].workFrom} onChange={this.handleChangeExpOrEdu} />
                     <input id={i} className="form-experience" placeholder="To" name="workTo" type="text" value={this.state.experiences[i].workTo} onChange={this.handleChangeExpOrEdu} />
-                    <input id={i} className="form-experience" placeholder="Description" name="workDesc" type="textarea" value={this.state.experiences[i].workDesc} onChange={this.handleChangeExpOrEdu} />
+                    <textarea id={i} className="form-experience" placeholder="Description" name="workDesc" value={this.state.experiences[i].workDesc} onChange={this.handleChangeExpOrEdu} />
                     <button id={i} className="del-experience" type="button" onClick={this.handleDeleteExpOrEdu}>Delete</button>
                   </div>
                 );
