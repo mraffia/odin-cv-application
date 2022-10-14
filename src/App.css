@@ -46,10 +46,20 @@
 }
 
 .form-container {
-  margin: 24px;
-  padding: 24px;
+  margin: 48px 96px 48px 96px;
+  padding: 0 24px 24px 24px;
   border: #282c34 4px solid;
   border-radius: 8px;
+}
+
+.form-subcontainer,
+.form-subcontainer-dynamic,
+.reset-container {
+  display: grid;
+}
+
+.form-subcontainer-dynamic {
+  margin: 10px 0 10px 0;
 }
 
 .form-personal,
@@ -85,6 +95,7 @@ button:hover {
 
 .add-experience, 
 .add-education {
+  margin-bottom: 10px;
   background-color: #04AA6D;
 }
 
@@ -96,4 +107,3 @@ button:hover {
 .reset {
   color: #282c34;
 }
-
