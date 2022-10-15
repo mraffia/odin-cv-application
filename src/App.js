@@ -152,6 +152,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
+        <div className="header">
+          <div className="header-title">Odin CV Application</div>
+        </div>
+        
         <div className="form-container">
           <form className="form">
             <div className="form-subcontainer">
@@ -206,8 +210,12 @@ class App extends React.Component {
         <Overview 
             personal={this.state.personal}
             experiences={this.state.experiences}
-            educations={this.state.educations}
-          />
+            educations={this.state.educations} 
+        />
+        
+        <div className="footer">
+          By yours truly,&nbsp;<a href="https://github.com/mraffia">mraffia</a>
+        </div>
       </div>
     );
   }

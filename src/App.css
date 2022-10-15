@@ -40,11 +40,25 @@
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 5vh 1fr 4vh;
   grid-template-areas: 
-  "form overview";
+  "header header"
+  "form overview"
+  "footer footer";
+}
+
+.header {
+  grid-area: header;
+  display: grid;
+  font-weight: bold;
+  background-color: #112D4E;
+  color: white;
+  text-align: center;
+  align-items: center;
 }
 
 .form-container {
+  grid-area: form;
   margin: 48px 48px 48px 96px;
   padding: 0 24px 24px 24px;
   border: #282c34 4px solid;
@@ -52,6 +66,7 @@
 }
 
 .overview-container {
+  grid-area: overview;
   margin: 48px 96px 48px 48px;
   padding: 0 24px 24px 24px;
   border: #282c34 4px solid;
@@ -119,4 +134,12 @@ button:hover {
 
 textarea { 
   resize: vertical; 
+}
+
+.footer {
+  background-color: #DBE2EF;
+  grid-area: footer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
