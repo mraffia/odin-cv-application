@@ -67,7 +67,7 @@
 
 .overview-container {
   grid-area: overview;
-  margin: 48px 96px 48px 48px;
+  margin: 48px 48px 48px 48px;
   padding: 0 24px 24px 24px;
   border: #282c34 4px solid;
   height: 842px;
