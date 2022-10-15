@@ -11,8 +11,6 @@ class App extends React.Component {
         title: '',
         email: '',
         phone: '',
-        linkedin: '',
-        github: '',
       },
       experiences: [{
         companyName: '',
@@ -132,8 +130,6 @@ class App extends React.Component {
         title: '',
         email: '',
         phone: '',
-        linkedin: '',
-        github: '',
       },
       experiences: [{
         companyName: '',
@@ -164,8 +160,6 @@ class App extends React.Component {
               <input className="form-personal" placeholder="Title" name="title" type="text" value={this.state.personal.title} onChange={this.handleChange} />
               <input className="form-personal" placeholder="Email" name="email" type="email" value={this.state.personal.email} onChange={this.handleChange} />
               <input className="form-personal" placeholder="Phone Number" name="phone" type="text" value={this.state.personal.phone} onChange={this.handleChange} />
-              <input className="form-personal" placeholder="LinkedIn (profile link)" name="linkedin" type="text" value={this.state.personal.linkedin} onChange={this.handleChange} />
-              <input className="form-personal" placeholder="GitHub (profile link)" name="github" type="text" value={this.state.personal.github} onChange={this.handleChange} />
             </div>
 
             <div className="form-subcontainer">

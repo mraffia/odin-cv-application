@@ -45,10 +45,18 @@
 }
 
 .form-container {
-  margin: 48px 96px 48px 96px;
+  margin: 48px 48px 48px 96px;
   padding: 0 24px 24px 24px;
   border: #282c34 4px solid;
-  border-radius: 8px;
+  border-radius: 12px;
+}
+
+.overview-container {
+  margin: 48px 96px 48px 48px;
+  padding: 0 24px 24px 24px;
+  border: #282c34 4px solid;
+  height: 842px;
+  width: 595px;
 }
 
 .form-subcontainer,
