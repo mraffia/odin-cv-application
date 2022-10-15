@@ -26,8 +26,7 @@ class Overview extends React.Component {
                             <div className="overview-experience-name">{experience.companyName}</div>
                             <div className="overview-experience-city">{experience.workCity}</div>
                             <div className="overview-experience-position">{experience.position}</div>
-                            <div className="overview-experience-from">{experience.workFrom}</div>
-                            <div className="overview-experience-to">{experience.workTo}</div>
+                            <div className="overview-experience-fromTo">{experience.workFrom}-{experience.workTo}</div>
                             <div className="overview-experience-desc">{experience.workDesc}</div>
                         </div>
                         );
@@ -42,10 +41,8 @@ class Overview extends React.Component {
                         <div key={i} className="overview-education">
                             <div className="overview-education-name">{education.schoolName}</div>
                             <div className="overview-experience-city">{education.studyCity}</div>
-                            <div className="overview-education-degree">{education.degree}</div>
-                            <div className="overview-education-study">{education.studyTitle}</div>
-                            <div className="overview-education-from">{education.studyFrom}</div>
-                            <div className="overview-education-to">{education.studyTo}</div>
+                            <div className="overview-education-degreeStudy">{education.degree}, {education.studyTitle}</div>
+                            <div className="overview-education-fromTo">{education.studyFrom}-{education.studyTo}</div>
                         </div>
                         );
                     })}

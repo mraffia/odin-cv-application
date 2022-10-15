@@ -166,6 +166,55 @@ textarea {
   margin-left: 6px;
 }
 
+.overview-experience-title,
+.overview-education-title {
+  margin-bottom: 0;
+}
+
+.overview-experience,
+.overview-education {
+  font-size: 12px;
+  display: grid;
+  margin-bottom: 10px;
+}
+
+.overview-experience {
+  grid-template-areas: 
+  "companyName workCity"
+  "position workFromTo"
+  "workDesc Desc";
+}
+
+.overview-experience div,
+.overview-education div {
+  margin-bottom: 6px;
+}
+
+.overview-education {
+  grid-template-areas: 
+  "schoolName studyCity"
+  "degreeTitle studyFromTo"
+}
+
+.overview-experience-name, 
+.overview-education-name {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.overview-experience-city, 
+.overview-education-city {
+  font-size: 14px;
+  font-style: italic;
+  justify-self: end;
+}
+
+.overview-experience-fromTo,
+.overview-education-fromTo {
+  font-style: italic;
+  justify-self: end;
+}
+
 .footer {
   background-color: #DBE2EF;
   grid-area: footer;
