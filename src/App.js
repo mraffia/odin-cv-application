@@ -23,6 +23,7 @@ class App extends React.Component {
       educations: [{
         schoolName: '',
         degree: '',
+        studyCity: '',
         studyTitle: '',
         studyFrom: '',
         studyTo: '',
@@ -92,6 +93,7 @@ class App extends React.Component {
         {
           schoolName: '',
           degree: '',
+          studyCity: '',
           studyTitle: '',
           studyFrom: '',
           studyTo: '',
@@ -142,6 +144,7 @@ class App extends React.Component {
       educations: [{
         schoolName: '',
         degree: '',
+        studyCity: '',
         studyTitle: '',
         studyFrom: '',
         studyTo: '',
@@ -192,6 +195,7 @@ class App extends React.Component {
                     <input id={i} className="form-education" placeholder="School Name" name="schoolName" type="text" value={this.state.educations[i].schoolName} onChange={this.handleChangeExpOrEdu} />
                     <input id={i} className="form-education" placeholder="Degree" name="degree" type="text" value={this.state.educations[i].degree} onChange={this.handleChangeExpOrEdu} />
                     <input id={i} className="form-education" placeholder="Title of Study" name="studyTitle" type="text" value={this.state.educations[i].studyTitle} onChange={this.handleChangeExpOrEdu} />
+                    <input id={i} className="form-education" placeholder="City" name="studyCity" type="text" value={this.state.educations[i].studyCity} onChange={this.handleChangeExpOrEdu} />
                     <input id={i} className="form-education" placeholder="From" name="studyFrom" type="text" value={this.state.educations[i].studyFrom} onChange={this.handleChangeExpOrEdu} />
                     <input id={i} className="form-education" placeholder="To" name="studyTo" type="text" value={this.state.educations[i].studyTo} onChange={this.handleChangeExpOrEdu} />
                     <button id={i} className="del-education" type="button" onClick={this.handleDeleteExpOrEdu}>Delete</button>
