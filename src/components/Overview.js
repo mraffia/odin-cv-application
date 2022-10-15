@@ -8,11 +8,13 @@ class Overview extends React.Component {
 
         return (
             <div className="overview-container">
-                <div className="overview-header">
-                    <h1>{personal.name}</h1>
-                    <p>{personal.title}</p>
-                    <div>{personal.email}</div>
-                    <div>{personal.phone}</div>
+                <div className="overview-personal">
+                    <h1 className="overview-personal-name">{personal.name}</h1>
+                    <div className="overview-personal-title">{personal.title}</div>
+                    <div className="overview-personal-contacts">
+                        <div className="overview-personal-email">{personal.email}</div> |
+                        <div className="overview-personal-phone">{personal.phone}</div>
+                    </div>
                 </div>
 
                 <div className="overview-experience-container">
