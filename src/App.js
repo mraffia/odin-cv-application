@@ -1,3 +1,4 @@
+import html2pdf from 'html2pdf.js';
 import React from 'react';
 import './App.css';
 import Overview from "./components/Overview";
@@ -35,6 +36,7 @@ class App extends React.Component {
     this.handleAddExpOrEdu = this.handleAddExpOrEdu.bind(this);
     this.handleDeleteExpOrEdu = this.handleDeleteExpOrEdu.bind(this);
     this.handleReset = this.handleReset.bind(this);
+    this.handleGeneratePdf = this.handleGeneratePdf.bind(this);
   }
 
   handleChange(event) {
@@ -152,6 +154,15 @@ class App extends React.Component {
     }, () => { console.log(this.state) });
   }
 
+  handleGeneratePdf(event) {
+    const element = document.querySelector(".overview-printable");
+
+    html2pdf()
+      .set({ html2canvas: { scale: 4 } })
+      .from(element)
+      .save();
+  }
+
   render() {
     return (
       <div className="container">
@@ -204,11 +215,11 @@ class App extends React.Component {
               })}
               <button className="add-education" type="button" onClick={this.handleAddExpOrEdu}>Add</button>
             </div>
-            
-            <div className="reset-container">
-              <button className="reset" type="button" onClick={this.handleReset}>Reset</button>
-            </div>
           </form>
+          <div className="buttons-container">
+            <button className="reset" type="button" onClick={this.handleReset}>Reset</button>
+            <button className="generatePdf" type="button" onClick={this.handleGeneratePdf}>Save CV as PDF</button>
+          </div>
         </div>
         
         <Overview 
