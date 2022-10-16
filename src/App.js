@@ -233,7 +233,7 @@ class App extends React.Component {
         <div className="form-container">
           <form className="form">
             <div className="form-subcontainer">
-              <h4>Personal Information</h4>
+              <h4 className="form-personal-title">Personal Information</h4>
               <input className="form-personal" placeholder="Name" name="name" type="text" value={this.state.personal.name} onChange={this.handleChange} />
               <input className="form-personal" placeholder="Title" name="title" type="text" value={this.state.personal.title} onChange={this.handleChange} />
               <input className="form-personal" placeholder="Email" name="email" type="email" value={this.state.personal.email} onChange={this.handleChange} />
@@ -241,7 +241,7 @@ class App extends React.Component {
             </div>
 
             <div className="form-subcontainer">
-              <h4>Experience</h4>
+              <h4 className="form-experience-title">Experience</h4>
               {this.state.experiences.map((experience, i) => {
                 return (
                   <div key={i} className="form-subcontainer-dynamic">
@@ -259,7 +259,7 @@ class App extends React.Component {
             </div>
 
             <div className="form-subcontainer">
-              <h4>Education</h4>
+              <h4 className="form-education-title">Education</h4>
               {this.state.educations.map((education, i) => {
                 return (
                   <div key={i} className="form-subcontainer-dynamic">
@@ -290,7 +290,7 @@ class App extends React.Component {
         />
         
         <div className="footer">
-          By yours truly,&nbsp;<a href="https://github.com/mraffia">mraffia</a>
+          By yours truly,&nbsp;<a href="https://github.com/mraffia"> <strong>mraffia</strong></a>
         </div>
       </div>
     );
