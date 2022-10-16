@@ -95,7 +95,7 @@ button:hover {
 }
 
 .buttons-container {
-  margin-top: 20px;
+  margin-top: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -186,6 +186,11 @@ textarea {
 .overview-education-name {
   font-size: 14px;
   font-weight: bold;
+}
+
+.overview-experience-position, 
+.overview-education-position {
+  font-weight: 550;
 }
 
 .overview-experience-city, 

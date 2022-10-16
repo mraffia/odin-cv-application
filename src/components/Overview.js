@@ -19,7 +19,7 @@ class Overview extends React.Component {
                     </div>
 
                     <div className="overview-experience-container">
-                        <h3 className="overview-experience-title">Work Experience</h3>
+                        <h3 className="overview-experience-title">Experience</h3>
                         <hr />
                         {experiences.map((experience, i) => {
                             return (

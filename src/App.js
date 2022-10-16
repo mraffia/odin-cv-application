@@ -36,6 +36,7 @@ class App extends React.Component {
     this.handleAddExpOrEdu = this.handleAddExpOrEdu.bind(this);
     this.handleDeleteExpOrEdu = this.handleDeleteExpOrEdu.bind(this);
     this.handleReset = this.handleReset.bind(this);
+    this.handleLoadExample = this.handleLoadExample.bind(this);
     this.handleGeneratePdf = this.handleGeneratePdf.bind(this);
   }
 
@@ -154,12 +155,71 @@ class App extends React.Component {
     }, () => { console.log(this.state) });
   }
 
+  handleLoadExample(event) {
+    this.setState({
+      personal: {
+        name: 'John Doe',
+        title: 'Software Engineer',
+        email: 'johndoe@gmail.com',
+        phone: '0812-3456-7890',
+      },
+      experiences: [{
+        companyName: 'Facebook',
+        position: 'Data Scientist',
+        workCity: 'Menlo Park, CA',
+        workFrom: 'Sep. 2017',
+        workTo: 'Now',
+        workDesc: 'Worked with cross functional partners to improve video publishers\' experience through Creator Studio as the sole data scientist supporting 5 PMs',
+      },
+      {
+        companyName: 'BuzzFeed',
+        position: 'Associate Data Scientist',
+        workCity: 'New York, NY',
+        workFrom: 'Apr. 2017',
+        workTo: 'Sep. 2017',
+        workDesc: 'Analyzed our video content on Facebook to increase our video distribution and grew our pages\' views by 54%',
+      },
+      {
+        companyName: 'Microsoft',
+        position: 'Program Manager Intern',
+        workCity: 'Redmond, WA',
+        workFrom: 'May. 2016',
+        workTo: 'Aug. 2016',
+        workDesc: 'Owned and designed an IT security product based on shielded Virtual Machine technology that lets organizations easily deploy privileged access workstations',
+      },
+      {
+        companyName: 'LinkedIn',
+        position: 'Software Engineer Intern',
+        workCity: 'Mountain View, CA',
+        workFrom: 'Jan. 2015',
+        workTo: 'Apr. 2015',
+        workDesc: 'Designed and implemented query persistence on the new generation graph database that would be the core of the Economic Graph',
+      },
+      {
+        companyName: 'Citadel',
+        position: 'Financial Technology Associate Intern',
+        workCity: 'Chicago, IL',
+        workFrom: 'Jun. 2014',
+        workTo: 'Aug. 2014',
+        workDesc: 'Developed in C++, a high performant multithreaded WebSocket server serving all the traders\' browser to replace an existing C++ GUI',
+      }],
+      educations: [{
+        schoolName: 'University of Waterloo',
+        degree: 'Bachelor',
+        studyCity: 'Waterloo, CN',
+        studyTitle: 'Computer Science',
+        studyFrom: 'Sep. 2012',
+        studyTo: 'Jan. 2017',
+      }],
+    }, () => { console.log(this.state) });
+  }
+
   handleGeneratePdf(event) {
-    const element = document.querySelector(".overview-printable");
+    const cvPage = document.querySelector(".overview-printable");
 
     html2pdf()
       .set({ html2canvas: { scale: 4 } })
-      .from(element)
+      .from(cvPage)
       .save();
   }
 
@@ -181,7 +241,7 @@ class App extends React.Component {
             </div>
 
             <div className="form-subcontainer">
-              <h4>Work Experience</h4>
+              <h4>Experience</h4>
               {this.state.experiences.map((experience, i) => {
                 return (
                   <div key={i} className="form-subcontainer-dynamic">
