@@ -204,6 +204,14 @@ class App extends React.Component {
         workDesc: 'Developed in C++, a high performant multithreaded WebSocket server serving all the traders\' browser to replace an existing C++ GUI',
       }],
       educations: [{
+        schoolName: 'Universitas Indonesia',
+        degree: 'Master',
+        studyCity: 'Depok, Indonesia',
+        studyTitle: 'Information Technology',
+        studyFrom: 'Sep. 2018',
+        studyTo: 'Sep. 2020',
+      },
+      {
         schoolName: 'University of Waterloo',
         degree: 'Bachelor',
         studyCity: 'Waterloo, CN',
