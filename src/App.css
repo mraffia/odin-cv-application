@@ -102,12 +102,19 @@ button:hover {
 }
 
 .reset {
-  margin-right: 20px;
+  flex: 1;
   color: #282c34;
 }
 
+.loadExample {
+  flex: 1;
+  margin: 0 10px 0 10px;
+  background-color: darkblue;
+}
+
 .generatePdf {
-  background-color: darkcyan;
+  flex: 1;
+  background-color: darkgreen;
 }
 
 textarea { 

@@ -218,6 +218,7 @@ class App extends React.Component {
           </form>
           <div className="buttons-container">
             <button className="reset" type="button" onClick={this.handleReset}>Reset</button>
+            <button className="loadExample" type="button" onClick={this.handleLoadExample}>Load Example</button>
             <button className="generatePdf" type="button" onClick={this.handleGeneratePdf}>Save CV as PDF</button>
           </div>
         </div>
