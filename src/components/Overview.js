@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/Overview.css';
 
 class Overview extends React.Component {    
     render() {

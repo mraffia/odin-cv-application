@@ -1,0 +1,96 @@
+.overview-container {
+    grid-area: overview;
+    margin: 48px 48px 48px 48px;
+    border: #282c34 4px solid;
+    height: 1123px;
+    width: 794px;
+}
+
+.overview-printable {
+    padding: 24px 36px 24px 36px;
+}
+
+.overview-personal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.overview-personal-name {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.overview-personal-title {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.overview-personal-contacts {
+    display: flex;
+    font-size: 12px;
+}
+
+.overview-personal-email {
+    margin-right: 6px;
+}
+
+.overview-personal-phone {
+    margin-left: 6px;
+}
+
+.overview-experience-title,
+.overview-education-title {
+    margin-bottom: 0;
+}
+
+.overview-experience,
+.overview-education {
+    font-size: 12px;
+    display: grid;
+    margin-bottom: 10px;
+}
+
+.overview-experience {
+    grid-template-areas: 
+    "companyName workCity"
+    "position workFromTo"
+    "workDesc Desc";
+}
+
+.overview-experience div,
+.overview-education div {
+    margin-bottom: 6px;
+}
+
+.overview-education {
+    grid-template-areas: 
+    "schoolName studyCity"
+    "degreeTitle studyFromTo"
+}
+
+.overview-experience-name, 
+.overview-education-name {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.overview-experience-position, 
+.overview-education-position {
+    font-weight: 550;
+}
+
+.overview-experience-city, 
+.overview-education-city {
+    font-size: 14px;
+    font-style: italic;
+    justify-self: end;
+}
+
+.overview-experience-fromTo,
+.overview-education-fromTo {
+    font-style: italic;
+    justify-self: end;
+}
