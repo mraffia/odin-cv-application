@@ -45,7 +45,7 @@ class App extends React.Component {
     const name = event.target.name;
     const personal = { ...this.state.personal, [name]: value };
 
-    this.setState({ personal }, () => { console.log(this.state) });
+    this.setState({ personal });
   }
 
   handleChangeExpOrEdu(event) {
@@ -71,7 +71,7 @@ class App extends React.Component {
       return item;
     });
 
-    this.setState({ [expOrEdu]: updated }, () => { console.log(this.state) });
+    this.setState({ [expOrEdu]: updated });
   }
 
   handleAddExpOrEdu(event) {
@@ -104,7 +104,7 @@ class App extends React.Component {
       );
     }
 
-    this.setState({ [expOrEdu]: added }, () => { console.log(this.state) });
+    this.setState({ [expOrEdu]: added });
   }
 
   handleDeleteExpOrEdu(event) {
@@ -125,7 +125,7 @@ class App extends React.Component {
       return index !== i ? item : undefined;
     });
 
-    this.setState({ [expOrEdu]: deleted }, () => { console.log(this.state) });
+    this.setState({ [expOrEdu]: deleted });
   }
 
   handleReset(event) {
@@ -152,7 +152,7 @@ class App extends React.Component {
         studyFrom: '',
         studyTo: '',
       }],
-    }, () => { console.log(this.state) });
+    });
   }
 
   handleLoadExample(event) {
@@ -219,7 +219,7 @@ class App extends React.Component {
         studyFrom: 'Sep. 2012',
         studyTo: 'Jan. 2017',
       }],
-    }, () => { console.log(this.state) });
+    });
   }
 
   handleGeneratePdf(event) {
