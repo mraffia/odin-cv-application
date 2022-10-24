@@ -1,7 +1,7 @@
 import html2pdf from 'html2pdf.js';
-import React from 'react';
-import './App.css';
+import React, { useState } from 'react';
 import Overview from "./components/Overview";
+import './App.css';
 
 function App(props) {
   const [personal, setPersonal] = useState({
@@ -10,66 +10,64 @@ function App(props) {
     email: '',
     phone: '',
   });
-  
-  const [experiences, setExperiences] = useState({
+
+  const [experiences, setExperiences] = useState([{
     companyName: '',
     position: '',
     workCity: '',
     workFrom: '',
     workTo: '',
     workDesc: '',
-  });
-  
-  const [educations, setEducations] = useState({
+  }]);
+
+  const [educations, setEducations] = useState([{
     schoolName: '',
     degree: '',
     studyCity: '',
     studyTitle: '',
     studyFrom: '',
     studyTo: '',
-  });
+  }]);
 
-  handleChange(e) {
+  function handleChange(e) {
     const value = e.target.value;
     const name = e.target.name;
-    const personal = { ...this.state.personal, [name]: value };
+    const updated = { ...personal, [name]: value };
 
-    this.setState({ personal });
+    setPersonal(updated);
   }
 
-  handleChangeExpOrEdu(e) {
+  function handleChangeExpOrEdu(e) {
     const value = e.target.value;
     const name = e.target.name;
     const index = Number(e.target.id);
-
-    let expOrEdu;
-    let expOrEduCopy;
+    let updated;
 
     if (e.target.className.slice(5) === "experience") {
-      expOrEdu = "experiences";
-      expOrEduCopy = this.state.experiences;
+      updated = experiences.map((item, i) => {
+        if (i === index) {
+          item[name] = value;
+        }
+        return item;
+      });
+      setExperiences(updated);
+
     } else if (e.target.className.slice(5) === "education") {
-      expOrEdu = "educations";
-      expOrEduCopy = this.state.educations;
+      updated = educations.map((item, i) => {
+        if (i === index) {
+          item[name] = value;
+        }
+        return item;
+      });
+      setEducations(updated);
     }
-
-    const updated = expOrEduCopy.map((item, i) => {
-      if (i === index) {
-        item[name] = value;
-      }
-      return item;
-    });
-
-    this.setState({ [expOrEdu]: updated });
   }
 
-  handleAddExpOrEdu(e) {
-    let expOrEdu;
+  function handleAddExpOrEdu(e) {
     let added;
 
     if (e.target.className.slice(4) === "experience") {
-      expOrEdu = "experiences";
-      added = this.state.experiences.concat(
+      added = experiences.concat(
         {
           companyName: '',
           position: '',
@@ -79,9 +77,10 @@ function App(props) {
           workDesc: '',
         }
       );
+      setExperiences(added);
+
     } else if (e.target.className.slice(4) === "education") {
-      expOrEdu = "educations";
-      added = this.state.educations.concat(
+      added = educations.concat(
         {
           schoolName: '',
           degree: '',
@@ -91,127 +90,123 @@ function App(props) {
           studyTo: '',
         }
       );
+      setEducations(added);
     }
-
-    this.setState({ [expOrEdu]: added });
   }
 
-  handleDeleteExpOrEdu(e) {
+  function handleDeleteExpOrEdu(e) {
     const index = Number(e.target.id);
-
-    let expOrEdu;
-    let expOrEduCopy;
+    let deleted;
 
     if (e.target.className.slice(4) === "experience") {
-      expOrEdu = "experiences";
-      expOrEduCopy = this.state.experiences;
+      deleted = experiences.filter((item, i) => {
+        return index !== i ? item : undefined;
+      });
+      setExperiences(deleted);
+
     } else if (e.target.className.slice(4) === "education") {
-      expOrEdu = "educations";
-      expOrEduCopy = this.state.educations;
+      deleted = educations.filter((item, i) => {
+        return index !== i ? item : undefined;
+      });
+      setEducations(deleted);
     }
-
-    const deleted = expOrEduCopy.filter((item, i) => {
-      return index !== i ? item : undefined;
-    });
-
-    this.setState({ [expOrEdu]: deleted });
   }
 
-  handleReset(e) {
-    this.setState({
-      personal: {
-        name: '',
-        title: '',
-        email: '',
-        phone: '',
-      },
-      experiences: [{
-        companyName: '',
-        position: '',
-        workCity: '',
-        workFrom: '',
-        workTo: '',
-        workDesc: '',
-      }],
-      educations: [{
-        schoolName: '',
-        degree: '',
-        studyCity: '',
-        studyTitle: '',
-        studyFrom: '',
-        studyTo: '',
-      }],
+  function handleReset(e) {
+    setPersonal({
+      name: '',
+      title: '',
+      email: '',
+      phone: '',
     });
+  
+    setExperiences([{
+      companyName: '',
+      position: '',
+      workCity: '',
+      workFrom: '',
+      workTo: '',
+      workDesc: '',
+    }]);
+  
+    setEducations([{
+      schoolName: '',
+      degree: '',
+      studyCity: '',
+      studyTitle: '',
+      studyFrom: '',
+      studyTo: '',
+    }]);
   }
 
-  handleLoadExample(e) {
-    this.setState({
-      personal: {
-        name: 'John Doe',
-        title: 'Software Engineer',
-        email: 'johndoe@gmail.com',
-        phone: '0812-3456-7890',
-      },
-      experiences: [{
-        companyName: 'Facebook',
-        position: 'Data Scientist',
-        workCity: 'Menlo Park, CA',
-        workFrom: 'Sep. 2017',
-        workTo: 'Now',
-        workDesc: 'Worked with cross functional partners to improve video publishers\' experience through Creator Studio as the sole data scientist supporting 5 PMs',
-      },
-      {
-        companyName: 'BuzzFeed',
-        position: 'Associate Data Scientist',
-        workCity: 'New York, NY',
-        workFrom: 'Apr. 2017',
-        workTo: 'Sep. 2017',
-        workDesc: 'Analyzed our video content on Facebook to increase our video distribution and grew our pages\' views by 54%',
-      },
-      {
-        companyName: 'Microsoft',
-        position: 'Program Manager Intern',
-        workCity: 'Redmond, WA',
-        workFrom: 'May. 2016',
-        workTo: 'Aug. 2016',
-        workDesc: 'Owned and designed an IT security product based on shielded Virtual Machine technology that lets organizations easily deploy privileged access workstations',
-      },
-      {
-        companyName: 'LinkedIn',
-        position: 'Software Engineer Intern',
-        workCity: 'Mountain View, CA',
-        workFrom: 'Jan. 2015',
-        workTo: 'Apr. 2015',
-        workDesc: 'Designed and implemented query persistence on the new generation graph database that would be the core of the Economic Graph',
-      },
-      {
-        companyName: 'Citadel',
-        position: 'Financial Technology Associate Intern',
-        workCity: 'Chicago, IL',
-        workFrom: 'Jun. 2014',
-        workTo: 'Aug. 2014',
-        workDesc: 'Developed in C++, a high performant multithreaded WebSocket server serving all the traders\' browser to replace an existing C++ GUI',
-      }],
-      educations: [{
-        schoolName: 'Universitas Indonesia',
-        degree: 'Master',
-        studyCity: 'Depok, Indonesia',
-        studyTitle: 'Information Technology',
-        studyFrom: 'Sep. 2018',
-        studyTo: 'Sep. 2020',
-      },
-      {
-        schoolName: 'University of Waterloo',
-        degree: 'Bachelor',
-        studyCity: 'Waterloo, CN',
-        studyTitle: 'Computer Science',
-        studyFrom: 'Sep. 2012',
-        studyTo: 'Jan. 2017',
-      }],
+  function handleLoadExample(e) {
+    setPersonal({
+      name: 'John Doe',
+      title: 'Software Engineer',
+      email: 'johndoe@gmail.com',
+      phone: '0812-3456-7890',
     });
+  
+    setExperiences([{
+      companyName: 'Facebook',
+      position: 'Data Scientist',
+      workCity: 'Menlo Park, CA',
+      workFrom: 'Sep. 2017',
+      workTo: 'Now',
+      workDesc: 'Worked with cross functional partners to improve video publishers\' experience through Creator Studio as the sole data scientist supporting 5 PMs',
+    },
+    {
+      companyName: 'BuzzFeed',
+      position: 'Associate Data Scientist',
+      workCity: 'New York, NY',
+      workFrom: 'Apr. 2017',
+      workTo: 'Sep. 2017',
+      workDesc: 'Analyzed our video content on Facebook to increase our video distribution and grew our pages\' views by 54%',
+    },
+    {
+      companyName: 'Microsoft',
+      position: 'Program Manager Intern',
+      workCity: 'Redmond, WA',
+      workFrom: 'May. 2016',
+      workTo: 'Aug. 2016',
+      workDesc: 'Owned and designed an IT security product based on shielded Virtual Machine technology that lets organizations easily deploy privileged access workstations',
+    },
+    {
+      companyName: 'LinkedIn',
+      position: 'Software Engineer Intern',
+      workCity: 'Mountain View, CA',
+      workFrom: 'Jan. 2015',
+      workTo: 'Apr. 2015',
+      workDesc: 'Designed and implemented query persistence on the new generation graph database that would be the core of the Economic Graph',
+    },
+    {
+      companyName: 'Citadel',
+      position: 'Financial Technology Associate Intern',
+      workCity: 'Chicago, IL',
+      workFrom: 'Jun. 2014',
+      workTo: 'Aug. 2014',
+      workDesc: 'Developed in C++, a high performant multithreaded WebSocket server serving all the traders\' browser to replace an existing C++ GUI',
+    }]);
+  
+    setEducations([{
+      schoolName: 'Universitas Indonesia',
+      degree: 'Master',
+      studyCity: 'Depok, Indonesia',
+      studyTitle: 'Information Technology',
+      studyFrom: 'Sep. 2018',
+      studyTo: 'Sep. 2020',
+    },
+    {
+      schoolName: 'University of Waterloo',
+      degree: 'Bachelor',
+      studyCity: 'Waterloo, CN',
+      studyTitle: 'Computer Science',
+      studyFrom: 'Sep. 2012',
+      studyTo: 'Jan. 2017',
+    }]);
   }
 
-  handleGeneratePdf(e) {
+  function handleGeneratePdf(e) {
     const cvPage = document.querySelector(".overview-printable");
 
     html2pdf()
