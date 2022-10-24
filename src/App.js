@@ -225,59 +225,59 @@ function App(props) {
         <form className="form">
           <div className="form-subcontainer">
             <h4 className="form-personal-title">Personal Information</h4>
-            <input className="form-personal" placeholder="Name" name="name" type="text" value={this.state.personal.name} onChange={this.handleChange} />
-            <input className="form-personal" placeholder="Title" name="title" type="text" value={this.state.personal.title} onChange={this.handleChange} />
-            <input className="form-personal" placeholder="Email" name="email" type="email" value={this.state.personal.email} onChange={this.handleChange} />
-            <input className="form-personal" placeholder="Phone Number" name="phone" type="text" value={this.state.personal.phone} onChange={this.handleChange} />
+            <input className="form-personal" placeholder="Name" name="name" type="text" value={personal.name} onChange={handleChange} />
+            <input className="form-personal" placeholder="Title" name="title" type="text" value={personal.title} onChange={handleChange} />
+            <input className="form-personal" placeholder="Email" name="email" type="email" value={personal.email} onChange={handleChange} />
+            <input className="form-personal" placeholder="Phone Number" name="phone" type="text" value={personal.phone} onChange={handleChange} />
           </div>
 
           <div className="form-subcontainer">
             <h4 className="form-experience-title">Experience</h4>
-            {this.state.experiences.map((experience, i) => {
+            {experiences.map((experience, i) => {
               return (
                 <div key={i} className="form-subcontainer-dynamic">
-                  <input id={i} className="form-experience" placeholder="Company Name" name="companyName" type="text" value={this.state.experiences[i].companyName} onChange={this.handleChangeExpOrEdu} />
-                  <input id={i} className="form-experience" placeholder="Position" name="position" type="text" value={this.state.experiences[i].position} onChange={this.handleChangeExpOrEdu} />
-                  <input id={i} className="form-experience" placeholder="City" name="workCity" type="text" value={this.state.experiences[i].workCity} onChange={this.handleChangeExpOrEdu} />
-                  <input id={i} className="form-experience" placeholder="From" name="workFrom" type="text" value={this.state.experiences[i].workFrom} onChange={this.handleChangeExpOrEdu} />
-                  <input id={i} className="form-experience" placeholder="To" name="workTo" type="text" value={this.state.experiences[i].workTo} onChange={this.handleChangeExpOrEdu} />
-                  <textarea id={i} className="form-experience" placeholder="Description" name="workDesc" value={this.state.experiences[i].workDesc} onChange={this.handleChangeExpOrEdu} />
-                  <button id={i} className="del-experience" type="button" onClick={this.handleDeleteExpOrEdu}>Delete</button>
+                  <input id={i} className="form-experience" placeholder="Company Name" name="companyName" type="text" value={experiences[i].companyName} onChange={handleChangeExpOrEdu} />
+                  <input id={i} className="form-experience" placeholder="Position" name="position" type="text" value={experiences[i].position} onChange={handleChangeExpOrEdu} />
+                  <input id={i} className="form-experience" placeholder="City" name="workCity" type="text" value={experiences[i].workCity} onChange={handleChangeExpOrEdu} />
+                  <input id={i} className="form-experience" placeholder="From" name="workFrom" type="text" value={experiences[i].workFrom} onChange={handleChangeExpOrEdu} />
+                  <input id={i} className="form-experience" placeholder="To" name="workTo" type="text" value={experiences[i].workTo} onChange={handleChangeExpOrEdu} />
+                  <textarea id={i} className="form-experience" placeholder="Description" name="workDesc" value={experiences[i].workDesc} onChange={handleChangeExpOrEdu} />
+                  <button id={i} className="del-experience" type="button" onClick={handleDeleteExpOrEdu}>Delete</button>
                 </div>
               );
             })}
-            <button className="add-experience" type="button" onClick={this.handleAddExpOrEdu}>Add</button>
+            <button className="add-experience" type="button" onClick={handleAddExpOrEdu}>Add</button>
           </div>
 
           <div className="form-subcontainer">
             <h4 className="form-education-title">Education</h4>
-            {this.state.educations.map((education, i) => {
+            {educations.map((education, i) => {
               return (
                 <div key={i} className="form-subcontainer-dynamic">
-                  <input id={i} className="form-education" placeholder="School Name" name="schoolName" type="text" value={this.state.educations[i].schoolName} onChange={this.handleChangeExpOrEdu} />
-                  <input id={i} className="form-education" placeholder="Degree" name="degree" type="text" value={this.state.educations[i].degree} onChange={this.handleChangeExpOrEdu} />
-                  <input id={i} className="form-education" placeholder="Title of Study" name="studyTitle" type="text" value={this.state.educations[i].studyTitle} onChange={this.handleChangeExpOrEdu} />
-                  <input id={i} className="form-education" placeholder="City" name="studyCity" type="text" value={this.state.educations[i].studyCity} onChange={this.handleChangeExpOrEdu} />
-                  <input id={i} className="form-education" placeholder="From" name="studyFrom" type="text" value={this.state.educations[i].studyFrom} onChange={this.handleChangeExpOrEdu} />
-                  <input id={i} className="form-education" placeholder="To" name="studyTo" type="text" value={this.state.educations[i].studyTo} onChange={this.handleChangeExpOrEdu} />
-                  <button id={i} className="del-education" type="button" onClick={this.handleDeleteExpOrEdu}>Delete</button>
+                  <input id={i} className="form-education" placeholder="School Name" name="schoolName" type="text" value={educations[i].schoolName} onChange={handleChangeExpOrEdu} />
+                  <input id={i} className="form-education" placeholder="Degree" name="degree" type="text" value={educations[i].degree} onChange={handleChangeExpOrEdu} />
+                  <input id={i} className="form-education" placeholder="Title of Study" name="studyTitle" type="text" value={educations[i].studyTitle} onChange={handleChangeExpOrEdu} />
+                  <input id={i} className="form-education" placeholder="City" name="studyCity" type="text" value={educations[i].studyCity} onChange={handleChangeExpOrEdu} />
+                  <input id={i} className="form-education" placeholder="From" name="studyFrom" type="text" value={educations[i].studyFrom} onChange={handleChangeExpOrEdu} />
+                  <input id={i} className="form-education" placeholder="To" name="studyTo" type="text" value={educations[i].studyTo} onChange={handleChangeExpOrEdu} />
+                  <button id={i} className="del-education" type="button" onClick={handleDeleteExpOrEdu}>Delete</button>
                 </div>
               );
             })}
-            <button className="add-education" type="button" onClick={this.handleAddExpOrEdu}>Add</button>
+            <button className="add-education" type="button" onClick={handleAddExpOrEdu}>Add</button>
           </div>
         </form>
         <div className="buttons-container">
-          <button className="reset" type="button" onClick={this.handleReset}>Reset</button>
-          <button className="loadExample" type="button" onClick={this.handleLoadExample}>Load Example</button>
-          <button className="generatePdf" type="button" onClick={this.handleGeneratePdf}>Save CV as PDF</button>
+          <button className="reset" type="button" onClick={handleReset}>Reset</button>
+          <button className="loadExample" type="button" onClick={handleLoadExample}>Load Example</button>
+          <button className="generatePdf" type="button" onClick={handleGeneratePdf}>Save CV as PDF</button>
         </div>
       </div>
       
       <Overview 
-          personal={this.state.personal}
-          experiences={this.state.experiences}
-          educations={this.state.educations} 
+          personal={personal}
+          experiences={experiences}
+          educations={educations} 
       />
       
       <div className="footer">
