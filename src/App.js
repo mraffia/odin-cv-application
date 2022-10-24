@@ -3,63 +3,52 @@ import React from 'react';
 import './App.css';
 import Overview from "./components/Overview";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      personal: {
-        name: '',
-        title: '',
-        email: '',
-        phone: '',
-      },
-      experiences: [{
-        companyName: '',
-        position: '',
-        workCity: '',
-        workFrom: '',
-        workTo: '',
-        workDesc: '',
-      }],
-      educations: [{
-        schoolName: '',
-        degree: '',
-        studyCity: '',
-        studyTitle: '',
-        studyFrom: '',
-        studyTo: '',
-      }],
-    };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleChangeExpOrEdu = this.handleChangeExpOrEdu.bind(this);
-    this.handleAddExpOrEdu = this.handleAddExpOrEdu.bind(this);
-    this.handleDeleteExpOrEdu = this.handleDeleteExpOrEdu.bind(this);
-    this.handleReset = this.handleReset.bind(this);
-    this.handleLoadExample = this.handleLoadExample.bind(this);
-    this.handleGeneratePdf = this.handleGeneratePdf.bind(this);
+function App(props) {
+  this.state = {
+    personal: {
+      name: '',
+      title: '',
+      email: '',
+      phone: '',
+    },
+    experiences: [{
+      companyName: '',
+      position: '',
+      workCity: '',
+      workFrom: '',
+      workTo: '',
+      workDesc: '',
+    }],
+    educations: [{
+      schoolName: '',
+      degree: '',
+      studyCity: '',
+      studyTitle: '',
+      studyFrom: '',
+      studyTo: '',
+    }],
   }
 
-  handleChange(event) {
-    const value = event.target.value;
-    const name = event.target.name;
+  handleChange(e) {
+    const value = e.target.value;
+    const name = e.target.name;
     const personal = { ...this.state.personal, [name]: value };
 
     this.setState({ personal });
   }
 
-  handleChangeExpOrEdu(event) {
-    const value = event.target.value;
-    const name = event.target.name;
-    const index = Number(event.target.id);
+  handleChangeExpOrEdu(e) {
+    const value = e.target.value;
+    const name = e.target.name;
+    const index = Number(e.target.id);
 
     let expOrEdu;
     let expOrEduCopy;
 
-    if (event.target.className.slice(5) === "experience") {
+    if (e.target.className.slice(5) === "experience") {
       expOrEdu = "experiences";
       expOrEduCopy = this.state.experiences;
-    } else if (event.target.className.slice(5) === "education") {
+    } else if (e.target.className.slice(5) === "education") {
       expOrEdu = "educations";
       expOrEduCopy = this.state.educations;
     }
@@ -74,11 +63,11 @@ class App extends React.Component {
     this.setState({ [expOrEdu]: updated });
   }
 
-  handleAddExpOrEdu(event) {
+  handleAddExpOrEdu(e) {
     let expOrEdu;
     let added;
 
-    if (event.target.className.slice(4) === "experience") {
+    if (e.target.className.slice(4) === "experience") {
       expOrEdu = "experiences";
       added = this.state.experiences.concat(
         {
@@ -90,7 +79,7 @@ class App extends React.Component {
           workDesc: '',
         }
       );
-    } else if (event.target.className.slice(4) === "education") {
+    } else if (e.target.className.slice(4) === "education") {
       expOrEdu = "educations";
       added = this.state.educations.concat(
         {
@@ -107,16 +96,16 @@ class App extends React.Component {
     this.setState({ [expOrEdu]: added });
   }
 
-  handleDeleteExpOrEdu(event) {
-    const index = Number(event.target.id);
+  handleDeleteExpOrEdu(e) {
+    const index = Number(e.target.id);
 
     let expOrEdu;
     let expOrEduCopy;
 
-    if (event.target.className.slice(4) === "experience") {
+    if (e.target.className.slice(4) === "experience") {
       expOrEdu = "experiences";
       expOrEduCopy = this.state.experiences;
-    } else if (event.target.className.slice(4) === "education") {
+    } else if (e.target.className.slice(4) === "education") {
       expOrEdu = "educations";
       expOrEduCopy = this.state.educations;
     }
@@ -128,7 +117,7 @@ class App extends React.Component {
     this.setState({ [expOrEdu]: deleted });
   }
 
-  handleReset(event) {
+  handleReset(e) {
     this.setState({
       personal: {
         name: '',
@@ -155,7 +144,7 @@ class App extends React.Component {
     });
   }
 
-  handleLoadExample(event) {
+  handleLoadExample(e) {
     this.setState({
       personal: {
         name: 'John Doe',
@@ -222,7 +211,7 @@ class App extends React.Component {
     });
   }
 
-  handleGeneratePdf(event) {
+  handleGeneratePdf(e) {
     const cvPage = document.querySelector(".overview-printable");
 
     html2pdf()
@@ -231,78 +220,77 @@ class App extends React.Component {
       .save();
   }
 
-  render() {
-    return (
-      <div className="container">
-        <div className="header">
-          <div className="header-title">Odin CV Application</div>
-        </div>
-        
-        <div className="form-container">
-          <form className="form">
-            <div className="form-subcontainer">
-              <h4 className="form-personal-title">Personal Information</h4>
-              <input className="form-personal" placeholder="Name" name="name" type="text" value={this.state.personal.name} onChange={this.handleChange} />
-              <input className="form-personal" placeholder="Title" name="title" type="text" value={this.state.personal.title} onChange={this.handleChange} />
-              <input className="form-personal" placeholder="Email" name="email" type="email" value={this.state.personal.email} onChange={this.handleChange} />
-              <input className="form-personal" placeholder="Phone Number" name="phone" type="text" value={this.state.personal.phone} onChange={this.handleChange} />
-            </div>
-
-            <div className="form-subcontainer">
-              <h4 className="form-experience-title">Experience</h4>
-              {this.state.experiences.map((experience, i) => {
-                return (
-                  <div key={i} className="form-subcontainer-dynamic">
-                    <input id={i} className="form-experience" placeholder="Company Name" name="companyName" type="text" value={this.state.experiences[i].companyName} onChange={this.handleChangeExpOrEdu} />
-                    <input id={i} className="form-experience" placeholder="Position" name="position" type="text" value={this.state.experiences[i].position} onChange={this.handleChangeExpOrEdu} />
-                    <input id={i} className="form-experience" placeholder="City" name="workCity" type="text" value={this.state.experiences[i].workCity} onChange={this.handleChangeExpOrEdu} />
-                    <input id={i} className="form-experience" placeholder="From" name="workFrom" type="text" value={this.state.experiences[i].workFrom} onChange={this.handleChangeExpOrEdu} />
-                    <input id={i} className="form-experience" placeholder="To" name="workTo" type="text" value={this.state.experiences[i].workTo} onChange={this.handleChangeExpOrEdu} />
-                    <textarea id={i} className="form-experience" placeholder="Description" name="workDesc" value={this.state.experiences[i].workDesc} onChange={this.handleChangeExpOrEdu} />
-                    <button id={i} className="del-experience" type="button" onClick={this.handleDeleteExpOrEdu}>Delete</button>
-                  </div>
-                );
-              })}
-              <button className="add-experience" type="button" onClick={this.handleAddExpOrEdu}>Add</button>
-            </div>
-
-            <div className="form-subcontainer">
-              <h4 className="form-education-title">Education</h4>
-              {this.state.educations.map((education, i) => {
-                return (
-                  <div key={i} className="form-subcontainer-dynamic">
-                    <input id={i} className="form-education" placeholder="School Name" name="schoolName" type="text" value={this.state.educations[i].schoolName} onChange={this.handleChangeExpOrEdu} />
-                    <input id={i} className="form-education" placeholder="Degree" name="degree" type="text" value={this.state.educations[i].degree} onChange={this.handleChangeExpOrEdu} />
-                    <input id={i} className="form-education" placeholder="Title of Study" name="studyTitle" type="text" value={this.state.educations[i].studyTitle} onChange={this.handleChangeExpOrEdu} />
-                    <input id={i} className="form-education" placeholder="City" name="studyCity" type="text" value={this.state.educations[i].studyCity} onChange={this.handleChangeExpOrEdu} />
-                    <input id={i} className="form-education" placeholder="From" name="studyFrom" type="text" value={this.state.educations[i].studyFrom} onChange={this.handleChangeExpOrEdu} />
-                    <input id={i} className="form-education" placeholder="To" name="studyTo" type="text" value={this.state.educations[i].studyTo} onChange={this.handleChangeExpOrEdu} />
-                    <button id={i} className="del-education" type="button" onClick={this.handleDeleteExpOrEdu}>Delete</button>
-                  </div>
-                );
-              })}
-              <button className="add-education" type="button" onClick={this.handleAddExpOrEdu}>Add</button>
-            </div>
-          </form>
-          <div className="buttons-container">
-            <button className="reset" type="button" onClick={this.handleReset}>Reset</button>
-            <button className="loadExample" type="button" onClick={this.handleLoadExample}>Load Example</button>
-            <button className="generatePdf" type="button" onClick={this.handleGeneratePdf}>Save CV as PDF</button>
+  return (
+    <div className="container">
+      <div className="header">
+        <div className="header-title">Odin CV Application</div>
+      </div>
+      
+      <div className="form-container">
+        <form className="form">
+          <div className="form-subcontainer">
+            <h4 className="form-personal-title">Personal Information</h4>
+            <input className="form-personal" placeholder="Name" name="name" type="text" value={this.state.personal.name} onChange={this.handleChange} />
+            <input className="form-personal" placeholder="Title" name="title" type="text" value={this.state.personal.title} onChange={this.handleChange} />
+            <input className="form-personal" placeholder="Email" name="email" type="email" value={this.state.personal.email} onChange={this.handleChange} />
+            <input className="form-personal" placeholder="Phone Number" name="phone" type="text" value={this.state.personal.phone} onChange={this.handleChange} />
           </div>
-        </div>
-        
-        <Overview 
-            personal={this.state.personal}
-            experiences={this.state.experiences}
-            educations={this.state.educations} 
-        />
-        
-        <div className="footer">
-          By yours truly,&nbsp;<a href="https://github.com/mraffia"> <strong>mraffia</strong></a>
+
+          <div className="form-subcontainer">
+            <h4 className="form-experience-title">Experience</h4>
+            {this.state.experiences.map((experience, i) => {
+              return (
+                <div key={i} className="form-subcontainer-dynamic">
+                  <input id={i} className="form-experience" placeholder="Company Name" name="companyName" type="text" value={this.state.experiences[i].companyName} onChange={this.handleChangeExpOrEdu} />
+                  <input id={i} className="form-experience" placeholder="Position" name="position" type="text" value={this.state.experiences[i].position} onChange={this.handleChangeExpOrEdu} />
+                  <input id={i} className="form-experience" placeholder="City" name="workCity" type="text" value={this.state.experiences[i].workCity} onChange={this.handleChangeExpOrEdu} />
+                  <input id={i} className="form-experience" placeholder="From" name="workFrom" type="text" value={this.state.experiences[i].workFrom} onChange={this.handleChangeExpOrEdu} />
+                  <input id={i} className="form-experience" placeholder="To" name="workTo" type="text" value={this.state.experiences[i].workTo} onChange={this.handleChangeExpOrEdu} />
+                  <textarea id={i} className="form-experience" placeholder="Description" name="workDesc" value={this.state.experiences[i].workDesc} onChange={this.handleChangeExpOrEdu} />
+                  <button id={i} className="del-experience" type="button" onClick={this.handleDeleteExpOrEdu}>Delete</button>
+                </div>
+              );
+            })}
+            <button className="add-experience" type="button" onClick={this.handleAddExpOrEdu}>Add</button>
+          </div>
+
+          <div className="form-subcontainer">
+            <h4 className="form-education-title">Education</h4>
+            {this.state.educations.map((education, i) => {
+              return (
+                <div key={i} className="form-subcontainer-dynamic">
+                  <input id={i} className="form-education" placeholder="School Name" name="schoolName" type="text" value={this.state.educations[i].schoolName} onChange={this.handleChangeExpOrEdu} />
+                  <input id={i} className="form-education" placeholder="Degree" name="degree" type="text" value={this.state.educations[i].degree} onChange={this.handleChangeExpOrEdu} />
+                  <input id={i} className="form-education" placeholder="Title of Study" name="studyTitle" type="text" value={this.state.educations[i].studyTitle} onChange={this.handleChangeExpOrEdu} />
+                  <input id={i} className="form-education" placeholder="City" name="studyCity" type="text" value={this.state.educations[i].studyCity} onChange={this.handleChangeExpOrEdu} />
+                  <input id={i} className="form-education" placeholder="From" name="studyFrom" type="text" value={this.state.educations[i].studyFrom} onChange={this.handleChangeExpOrEdu} />
+                  <input id={i} className="form-education" placeholder="To" name="studyTo" type="text" value={this.state.educations[i].studyTo} onChange={this.handleChangeExpOrEdu} />
+                  <button id={i} className="del-education" type="button" onClick={this.handleDeleteExpOrEdu}>Delete</button>
+                </div>
+              );
+            })}
+            <button className="add-education" type="button" onClick={this.handleAddExpOrEdu}>Add</button>
+          </div>
+        </form>
+        <div className="buttons-container">
+          <button className="reset" type="button" onClick={this.handleReset}>Reset</button>
+          <button className="loadExample" type="button" onClick={this.handleLoadExample}>Load Example</button>
+          <button className="generatePdf" type="button" onClick={this.handleGeneratePdf}>Save CV as PDF</button>
         </div>
       </div>
-    );
-  }
+      
+      <Overview 
+          personal={this.state.personal}
+          experiences={this.state.experiences}
+          educations={this.state.educations} 
+      />
+      
+      <div className="footer">
+        By yours truly,&nbsp;<a href="https://github.com/mraffia"> <strong>mraffia</strong></a>
+      </div>
+    </div>
+  );
+
 }
 
 export default App;
