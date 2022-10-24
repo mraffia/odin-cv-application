@@ -4,30 +4,30 @@ import './App.css';
 import Overview from "./components/Overview";
 
 function App(props) {
-  this.state = {
-    personal: {
-      name: '',
-      title: '',
-      email: '',
-      phone: '',
-    },
-    experiences: [{
-      companyName: '',
-      position: '',
-      workCity: '',
-      workFrom: '',
-      workTo: '',
-      workDesc: '',
-    }],
-    educations: [{
-      schoolName: '',
-      degree: '',
-      studyCity: '',
-      studyTitle: '',
-      studyFrom: '',
-      studyTo: '',
-    }],
-  }
+  const [personal, setPersonal] = useState({
+    name: '',
+    title: '',
+    email: '',
+    phone: '',
+  });
+  
+  const [experiences, setExperiences] = useState({
+    companyName: '',
+    position: '',
+    workCity: '',
+    workFrom: '',
+    workTo: '',
+    workDesc: '',
+  });
+  
+  const [educations, setEducations] = useState({
+    schoolName: '',
+    degree: '',
+    studyCity: '',
+    studyTitle: '',
+    studyFrom: '',
+    studyTo: '',
+  });
 
   handleChange(e) {
     const value = e.target.value;
