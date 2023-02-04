@@ -14,5 +14,6 @@ A CV creator/generator app.
 ## Tools
 - HTML
 - CSS
+- Javascript
 - React.js
 - [html2pdf](https://www.npmjs.com/package/html-to-pdf-js)
