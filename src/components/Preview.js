@@ -1,11 +1,7 @@
 import React from 'react';
-import '../styles/Overview.css';
+import '../styles/Preview.css';
 
-function Overview(props) {  
-    const personal = props.personal;
-    const experiences = props.experiences;
-    const educations = props.educations;
-
+function Overview({ personal, experiences, educations }) { 
     return (
         <div className="overview-container">
             <div className="overview-printable">

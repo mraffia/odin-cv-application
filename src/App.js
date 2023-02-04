@@ -1,6 +1,6 @@
 import html2pdf from 'html2pdf.js';
 import React, { useState } from 'react';
-import Overview from "./components/Overview";
+import Preview from "./components/Preview";
 import './App.css';
 
 function App(props) {
@@ -274,7 +274,7 @@ function App(props) {
         </div>
       </div>
       
-      <Overview 
+      <Preview 
           personal={personal}
           experiences={experiences}
           educations={educations} 
