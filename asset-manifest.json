@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/odin-cv-application/static/css/main.0f431bb5.css",
-    "main.js": "/odin-cv-application/static/js/main.fbcb43ae.js",
+    "main.css": "/odin-cv-application/static/css/main.91a06c56.css",
+    "main.js": "/odin-cv-application/static/js/main.48ff4c7a.js",
     "static/js/703.4b326add.chunk.js": "/odin-cv-application/static/js/703.4b326add.chunk.js",
     "static/js/560.eeead396.chunk.js": "/odin-cv-application/static/js/560.eeead396.chunk.js",
     "index.html": "/odin-cv-application/index.html",
-    "main.0f431bb5.css.map": "/odin-cv-application/static/css/main.0f431bb5.css.map",
-    "main.fbcb43ae.js.map": "/odin-cv-application/static/js/main.fbcb43ae.js.map",
+    "main.91a06c56.css.map": "/odin-cv-application/static/css/main.91a06c56.css.map",
+    "main.48ff4c7a.js.map": "/odin-cv-application/static/js/main.48ff4c7a.js.map",
     "703.4b326add.chunk.js.map": "/odin-cv-application/static/js/703.4b326add.chunk.js.map",
     "560.eeead396.chunk.js.map": "/odin-cv-application/static/js/560.eeead396.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0f431bb5.css",
-    "static/js/main.fbcb43ae.js"
+    "static/css/main.91a06c56.css",
+    "static/js/main.48ff4c7a.js"
   ]
 }
