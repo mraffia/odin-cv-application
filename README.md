@@ -8,8 +8,8 @@ https://mraffia.github.io/odin-cv-application/
 A CV creator/generator app.
 
 ## Features
-- Take users input and show the preview of the created CV
-- Download the created CV as PDF
+- Take users input and show the preview of the CV
+- Download the CV as PDF
 
 ## Tools
 - HTML
