@@ -1,0 +1,44 @@
+.navbar {
+  grid-area: header;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: bold;
+  background-color: #112D4E;
+  color: white;
+}
+
+.nav-title-link {
+  color: white;
+  text-decoration: none;
+  margin-left: 40px;
+}
+
+.nav-title {
+  font-size: 24px;
+  margin-left: 40px;
+}
+
+.nav-links {
+  width: 15%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  margin-right: 40px;
+}
+
+.nav-name {
+  color: lightskyblue
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  transition: transform .2s;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  transform: scale(1.1);
+}

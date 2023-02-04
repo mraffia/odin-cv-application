@@ -1,5 +1,6 @@
 import html2pdf from 'html2pdf.js';
 import React, { useState } from 'react';
+import Nav from "./components/Nav";
 import Preview from "./components/Preview";
 import './App.css';
 
@@ -217,9 +218,7 @@ function App(props) {
 
   return (
     <div className="container">
-      <div className="header">
-        <div className="header-title">Odin CV Application</div>
-      </div>
+      <Nav />
       
       <div className="form-container">
         <form className="form">
