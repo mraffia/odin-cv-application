@@ -5,11 +5,12 @@
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 5vh 1fr 4vh;
+  grid-template-rows: 70px 1fr 35px;
   grid-template-areas: 
   "header header"
   "form overview"
   "footer footer";
+  min-height: 100vh;
 }
 
 .header {
@@ -73,6 +74,7 @@ button {
   cursor: pointer;
   opacity: 0.8;
   border-radius: 4px;
+  font-weight: bold;
 }
 
 button:hover {
@@ -123,4 +125,9 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.footer a {
+  color: black;
+  text-decoration: none;
 }
